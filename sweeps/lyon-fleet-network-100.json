@@ -1,0 +1,32 @@
+{
+  "scenario": "../scenarios/lyon/fleet-network-100.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "variant",
+      "points": [
+        {
+          "value": "as-ran",
+          "set": {
+            "/tick_s": 30.0,
+            "/walk_speed_mps": 4.0,
+            "/cohorts/0/vehicle/capacity": 8,
+            "/policy": "urgency-as-ran"
+          }
+        },
+        {
+          "value": "corrected",
+          "set": {
+            "/tick_s": 1.0,
+            "/walk_speed_mps": 1.4,
+            "/cohorts/0/vehicle/capacity": 9,
+            "/policy": "urgency"
+          }
+        }
+      ]
+    }
+  ]
+}

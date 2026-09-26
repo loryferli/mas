@@ -8,3 +8,11 @@ dependencies = [
     "anthropic",
     "matplotlib>=3.11.1",
 ]
+
+# Only what the reference engine needs at run time, for the harness under `scripts/reference/`:
+# `uv run --group reference scripts/reference/run.py ...`.
+[dependency-groups]
+reference = [
+    "networkx",
+    "numpy",
+]

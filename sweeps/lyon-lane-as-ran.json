@@ -1,0 +1,1580 @@
+{
+  "scenario": "../scenarios/lyon/lane-grid-as-ran.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "setting",
+      "points": [
+        {
+          "value": "lead-1800",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 1800,
+            "/cohorts/1/departure_offset_s": 1800,
+            "/cohorts/1/earliness_margin_s": 0,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 1800,
+            "/cohorts/6/departure_offset_s": 1800,
+            "/cohorts/6/earliness_margin_s": 0,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-1800-margins-900",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 1800,
+            "/cohorts/1/departure_offset_s": 1800,
+            "/cohorts/1/earliness_margin_s": 900,
+            "/cohorts/1/lateness_margin_s": 900,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 1800,
+            "/cohorts/6/departure_offset_s": 1800,
+            "/cohorts/6/earliness_margin_s": 900,
+            "/cohorts/6/lateness_margin_s": 900,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-3600",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 3600,
+            "/cohorts/1/departure_offset_s": 3600,
+            "/cohorts/1/earliness_margin_s": 0,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 3600,
+            "/cohorts/6/departure_offset_s": 3600,
+            "/cohorts/6/earliness_margin_s": 0,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-3600-margins-900",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 3600,
+            "/cohorts/1/departure_offset_s": 3600,
+            "/cohorts/1/earliness_margin_s": 900,
+            "/cohorts/1/lateness_margin_s": 900,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 3600,
+            "/cohorts/6/departure_offset_s": 3600,
+            "/cohorts/6/earliness_margin_s": 900,
+            "/cohorts/6/lateness_margin_s": 900,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-6000",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 6000,
+            "/cohorts/1/departure_offset_s": 6000,
+            "/cohorts/1/earliness_margin_s": 0,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 6000,
+            "/cohorts/6/departure_offset_s": 6000,
+            "/cohorts/6/earliness_margin_s": 0,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-6000-margins-300",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 6000,
+            "/cohorts/1/departure_offset_s": 6000,
+            "/cohorts/1/earliness_margin_s": 300,
+            "/cohorts/1/lateness_margin_s": 300,
+            "/cohorts/1/departure_noise_s": 0.0,
+            "/cohorts/6/advanced_declaration_lead_s": 6000,
+            "/cohorts/6/departure_offset_s": 6000,
+            "/cohorts/6/earliness_margin_s": 300,
+            "/cohorts/6/lateness_margin_s": 300,
+            "/cohorts/6/departure_noise_s": 0.0
+          }
+        },
+        {
+          "value": "lead-600",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 0,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 0,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-late-60",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 0,
+            "/cohorts/1/lateness_margin_s": 60,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 0,
+            "/cohorts/6/lateness_margin_s": 60,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-early-120",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 120,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 120,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-margins-120",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 120,
+            "/cohorts/1/lateness_margin_s": 120,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 120,
+            "/cohorts/6/lateness_margin_s": 120,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-margins-240",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 240,
+            "/cohorts/1/lateness_margin_s": 240,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 240,
+            "/cohorts/6/lateness_margin_s": 240,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-early-60",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 60,
+            "/cohorts/1/lateness_margin_s": 0,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 60,
+            "/cohorts/6/lateness_margin_s": 0,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        },
+        {
+          "value": "lead-600-margins-60",
+          "set": {
+            "/cohorts/1/advanced_declaration_lead_s": 600,
+            "/cohorts/1/departure_offset_s": 600,
+            "/cohorts/1/earliness_margin_s": 60,
+            "/cohorts/1/lateness_margin_s": 60,
+            "/cohorts/1/departure_noise_s": {
+              "normal": {
+                "mean": -60,
+                "sd": 240
+              }
+            },
+            "/cohorts/6/advanced_declaration_lead_s": 300,
+            "/cohorts/6/departure_offset_s": 300,
+            "/cohorts/6/earliness_margin_s": 60,
+            "/cohorts/6/lateness_margin_s": 60,
+            "/cohorts/6/departure_noise_s": {
+              "normal": {
+                "mean": -180,
+                "sd": 120
+              }
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "cell",
+      "points": [
+        {
+          "value": "drivers-2-declaring-0-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-0-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-50-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-2-declaring-100-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-0-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 6,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-50-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/1/count": 3,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-6-declaring-100-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 6,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-0-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-50-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 5,
+            "/cohorts/1/count": 5,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-10-declaring-100-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-2-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 2,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-2-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 1,
+            "/cohorts/6/count": 1
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-2-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 2
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-6-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 6,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-6-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 3,
+            "/cohorts/6/count": 3
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-6-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 6
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-10-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-10-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 5,
+            "/cohorts/6/count": 5
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-10-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-0-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-50-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 10,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-20-declaring-0",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 20,
+            "/cohorts/6/count": 0
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-20-declaring-50",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 10,
+            "/cohorts/6/count": 10
+          }
+        },
+        {
+          "value": "drivers-20-declaring-100-riders-20-declaring-100",
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/1/count": 20,
+            "/cohorts/5/count": 0,
+            "/cohorts/6/count": 20
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,11 +1,15 @@
 # Findings
 
-Everything here comes from eight committed files: `analysis/results.csv` (100 runs),
+Everything here comes from committed files: on the corridor, `analysis/results.csv` (100 runs),
 `analysis/policies.csv` (150), `analysis/networks.csv` (250), `analysis/walking.csv` (150),
 `analysis/fleet.csv` (80), `analysis/declaration.csv` (50), `analysis/adoption.csv` (50),
-`analysis/approach.csv` (100), and single runs at seed 42 where one is quoted as such. No row in any
-of them hit the clock cap and no row stranded an agent, so every figure below is a completed run
-rather than a cut-off one. Nothing here needs an API key.
+`analysis/approach.csv` (100), and single runs at seed 42 where one is quoted as such; on the second
+study area, the `analysis/lyon-*.csv` sweeps, the original simulator's runs under
+`analysis/reference/`, and `analysis/agreement.csv`. No row on the corridor hit the clock cap or
+stranded an agent, so every figure there is a completed run. The one place a cut-off run is read is
+the re-run of the advance-declaration grid *as the original ran it*, whose riders had no patience at
+all: there a rider still waiting at the cap is a rider nobody carried, and is counted as one.
+Nothing here needs an API key.
 
 **How the comparisons are read.** Each sweep runs the same ten seeds at every axis point, so two
 rules can be differenced *per seed* rather than compared as two means with overlapping bands. Where
@@ -509,6 +513,88 @@ A dead sidecar fails the run rather than finishing under a fixed rule.
 
 **If the heuristic wins, that is the finding.** A negative result with cost figures attached is
 worth more than a demo without them.
+
+## Re-running the two earlier studies: the carpool study survives, the fleet study does not
+
+Both earlier studies - the carpool study on advance declaration and the fleet study on structured networks, both cited in the README - were re-run on their own ground, the Rhône and the lane
+from Bourgoin-Jallieu into Lyon, rebuilt from open data (`data/lyon/`, whose README says how close
+the rebuilt demand is to the published one - close, not equal). Every scenario was run three ways,
+ten seeds each: by **the original simulator** itself, headless and offline
+(`analysis/reference/`); by this engine **as the original ran** - its tick, its walking speed, its
+bugs as knobs; and by this engine **corrected**. Two rules were fixed before any of it was looked
+at: this engine's as-ran mean inside the original's seed range, and every between-scenario
+difference pointing the same way in both (`analysis/agreement.py`, `analysis/agreement.csv`).
+
+**The fleet study's result does not survive its own bugs.** Its claim was that a fleet run over a
+structured network of seventeen stations beats the same fleet door to door: fewer kilometres, fuller
+vehicles, collective transport rather than taxis. At the 100 sample, ten seeds each:
+
+| | Service | Occupancy | Vehicle-km | Mean wait |
+|---|---|---|---|---|
+| Door to door, original simulator | 0.906 | 0.878 | 45,839 | 252 s |
+| Network, original simulator | **0.442** | 1.318 | 39,227 | 1,389 s |
+| Door to door, corrected | 0.999 | 0.843 | 48,471 | 235 s |
+| Network, corrected | 0.954 | **0.771** | **86,267** | 967 s |
+
+The original's network does drive fewer kilometres at higher occupancy - and serves fewer than half
+its riders. Three defects in the original make that shape, each measured in its own runs:
+
+- **Its fleet operator loses assignments.** A taxi handed a rider is still idle for the rest of the
+  same decision, so it can be handed another, and it collects only the last; every rider handed to
+  it before is told a taxi is coming, offered to nobody else, and gives up. 2,872 assignments lost
+  per run on the network at 100, 278 door to door. Riders who give up are kilometres not driven.
+- **Its taxi boards riders it never moves out of waiting**, in a fallback branch: 560 per run on the
+  network at 100, none door to door. They ride along uncounted as riders and counted as occupancy.
+- **Its metrics notebook counts every rider who gave up as served**, by matching a state name the
+  simulator never logs. The published satisfaction of every fleet scenario is therefore 1.000 by
+  construction; the service actually delivered was 0.906 door to door and 0.442 over the network.
+
+Corrected, **the network loses on every axis**: 0.954 of service against 0.999, occupancy 0.771
+against 0.843, and 78% more vehicle-kilometres, because a rider changing taxi at every station is a
+taxi driving out to every station. The 10 sample says the same at eight times the demand: 0.995
+against 1.000, occupancy 0.941 against 0.996, and 541,558 vehicle-kilometres against 298,536. That
+is this repository's own fleet finding on the Welsh corridor, arrived at from the other direction:
+**structuring the network does not rescue an on-demand fleet**, and what looked like it did was the
+operator dropping riders.
+
+**How well this engine reproduces the original.** Door to door at 100, as ran, its service is
+0.905 against the original's 0.890-0.927 - inside the range. Over the network it is 0.305 against
+0.416-0.464 and occupancy 1.218 against 1.302-1.354: close, below, and outside, because the
+misboarding above is counted in the original and deliberately not reproduced here. Kilometres run
+about 7% under the original throughout, from one known difference: the original scatters trip ends
+over a square and this engine over a disc of the same radius. The sign of every network-against-
+door-to-door difference agrees, all seven metrics. `analysis/agreement.csv` lists every row. The original was not run at the 10 sample:
+one seed of the door-to-door scenario had not finished after 84 minutes, its assignment being a
+pure-Python loop over nine thousand taxis, so the 10-sample figures above are this engine's alone.
+
+**The carpool study's anticipation result survives, and so does its caveat - for a reason it did
+not know.** Over the 1,872 cells of the advance-declaration grid re-run here (13 settings, drivers and
+riders in {2, 6, 10, 20}, declaring shares of 0, 50 and 100% on each side, `analysis/reference/
+lyon-lane-grid.csv` against `analysis/lyon-lane-as-ran.csv`), this engine's mean falls inside the
+original's seed range in 1,709 cells for service and 1,780 for waiting time. Where the original's
+own difference between full declaration and none is larger than its seed-to-seed noise, the waiting
+time moves the same way in **43 of 46** cells; service agrees in only 25 of 62, the disagreements
+sitting in the wide-margin settings, where the two engines time a driver to its rider differently.
+Averaged over the grid, as the original ran it, full declaration on both sides leaves the wait where
+it was - 506 s against 508 s in the original, 609 s against 617 s here - and declaring drivers alone
+triple it, 1,624 s and 1,718 s. That is the carpool study's finding: a path only under full adoption, and
+no clear separation even there.
+
+**The reason is that half of it was switched off.** The original's declaring rider was meant to time
+its departure to the driver coming for it, and never did: its window bounds carry a sign error, no
+driver ever fits, and the rider always leaves at its declared time. Only the driver side of
+anticipated declaration ever ran. Corrected - both sides timing to each other, a 1 s tick, walking at
+1.4 m/s - full declaration cuts the average wait from 507 s to **382 s**, a quarter, and declaring
+drivers alone no longer triple it (666 s). The carpool study measured anticipated declaration with its rider
+half missing, and the conclusion that it offers "a path only under forced full adoption" is a
+statement about that half-built mechanism rather than about anticipation. Every grid scenario also
+configured a departure guarantee that the original simulator created and never put in the world,
+so no published run had one.
+
+**One day, single seeds.** `analysis/images/lyon-100-occupancy.svg`, `lyon-100-distance.svg` and
+`lyon-100-times.svg` draw what the original's notebooks drew - occupancy per quarter hour weighted by
+distance, cumulative loaded and empty kilometres, and the spread of journey and waiting times - for
+the three services at 100 as ran, seed 1: the shape of one day, not a finding about many.
 
 ## What would change these numbers
 
