@@ -1,0 +1,55 @@
+{
+  "scenario": "../scenarios/fleet.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "capacity",
+      "points": [
+        {
+          "value": 2,
+          "set": {
+            "/cohorts/0/vehicle/capacity": 2
+          }
+        },
+        {
+          "value": 4,
+          "set": {
+            "/cohorts/0/vehicle/capacity": 4
+          }
+        }
+      ]
+    },
+    {
+      "name": "vehicles",
+      "points": [
+        {
+          "value": 4,
+          "set": {
+            "/cohorts/0/count": 4
+          }
+        },
+        {
+          "value": 8,
+          "set": {
+            "/cohorts/0/count": 8
+          }
+        },
+        {
+          "value": 16,
+          "set": {
+            "/cohorts/0/count": 16
+          }
+        },
+        {
+          "value": 32,
+          "set": {
+            "/cohorts/0/count": 32
+          }
+        }
+      ]
+    }
+  ]
+}

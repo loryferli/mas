@@ -1,0 +1,44 @@
+{
+  "name": "minimal",
+  "tick_s": 1,
+  "max_time_s": 7200,
+  "environment": {
+    "stations": [
+      { "name": "Northgate Park and Ride", "latitude": 45.00, "longitude": 5.00 },
+      { "name": "Central Terminus", "latitude": 45.27, "longitude": 5.00 }
+    ],
+    "networks": [
+      {
+        "name": "Valley Corridor",
+        "operator": "Valley Mobility",
+        "lines": [
+          {
+            "origin": "Northgate Park and Ride",
+            "destination": "Central Terminus"
+          }
+        ]
+      }
+    ]
+  },
+  "cohorts": [
+    {
+      "kind": "CarpoolDriver",
+      "name": "the driver",
+      "count": 1,
+      "spawn_window": { "start_s": 0, "end_s": 0 },
+      "origin": { "latitude": 45.00, "longitude": 4.95 },
+      "destination": { "latitude": 45.27, "longitude": 5.05 },
+      "departure_offset_s": 60,
+      "vehicle": { "capacity": 5 }
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "the rider",
+      "count": 1,
+      "spawn_window": { "start_s": 0, "end_s": 0 },
+      "origin": { "latitude": 45.00, "longitude": 5.00 },
+      "destination": { "latitude": 45.27, "longitude": 5.00 },
+      "departure_offset_s": 0
+    }
+  ]
+}

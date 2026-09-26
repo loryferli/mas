@@ -1,0 +1,18 @@
+{
+  "name": "undeclared-station",
+  "environment": {
+    "stations": [
+      { "name": "Northgate Park and Ride", "latitude": 45.00, "longitude": 5.00 }
+    ],
+    "networks": [
+      {
+        "name": "Valley Corridor",
+        "operator": "Valley Mobility",
+        "lines": [
+          { "origin": "Northgate Park and Ride", "destination": "Nowhere In Particular" }
+        ]
+      }
+    ]
+  },
+  "cohorts": []
+}

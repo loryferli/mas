@@ -1,0 +1,119 @@
+{
+  "scenario": "../scenarios/mixed-declaration.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "declaring_pct",
+      "points": [
+        {
+          "value": 0,
+          "set": {
+            "/cohorts/0/count": 0,
+            "/cohorts/4/count": 4,
+            "/cohorts/1/count": 0,
+            "/cohorts/5/count": 2,
+            "/cohorts/2/count": 0,
+            "/cohorts/6/count": 2,
+            "/cohorts/3/count": 0,
+            "/cohorts/7/count": 5,
+            "/cohorts/8/count": 0,
+            "/cohorts/12/count": 10,
+            "/cohorts/9/count": 0,
+            "/cohorts/13/count": 9,
+            "/cohorts/10/count": 0,
+            "/cohorts/14/count": 4,
+            "/cohorts/11/count": 0,
+            "/cohorts/15/count": 9
+          }
+        },
+        {
+          "value": 25,
+          "set": {
+            "/cohorts/0/count": 1,
+            "/cohorts/4/count": 3,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 1,
+            "/cohorts/2/count": 1,
+            "/cohorts/6/count": 1,
+            "/cohorts/3/count": 1,
+            "/cohorts/7/count": 4,
+            "/cohorts/8/count": 3,
+            "/cohorts/12/count": 7,
+            "/cohorts/9/count": 2,
+            "/cohorts/13/count": 7,
+            "/cohorts/10/count": 1,
+            "/cohorts/14/count": 3,
+            "/cohorts/11/count": 2,
+            "/cohorts/15/count": 7
+          }
+        },
+        {
+          "value": 50,
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/4/count": 2,
+            "/cohorts/1/count": 1,
+            "/cohorts/5/count": 1,
+            "/cohorts/2/count": 1,
+            "/cohorts/6/count": 1,
+            "/cohorts/3/count": 3,
+            "/cohorts/7/count": 2,
+            "/cohorts/8/count": 5,
+            "/cohorts/12/count": 5,
+            "/cohorts/9/count": 5,
+            "/cohorts/13/count": 4,
+            "/cohorts/10/count": 2,
+            "/cohorts/14/count": 2,
+            "/cohorts/11/count": 5,
+            "/cohorts/15/count": 4
+          }
+        },
+        {
+          "value": 75,
+          "set": {
+            "/cohorts/0/count": 3,
+            "/cohorts/4/count": 1,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/2/count": 2,
+            "/cohorts/6/count": 0,
+            "/cohorts/3/count": 4,
+            "/cohorts/7/count": 1,
+            "/cohorts/8/count": 8,
+            "/cohorts/12/count": 2,
+            "/cohorts/9/count": 7,
+            "/cohorts/13/count": 2,
+            "/cohorts/10/count": 3,
+            "/cohorts/14/count": 1,
+            "/cohorts/11/count": 7,
+            "/cohorts/15/count": 2
+          }
+        },
+        {
+          "value": 100,
+          "set": {
+            "/cohorts/0/count": 4,
+            "/cohorts/4/count": 0,
+            "/cohorts/1/count": 2,
+            "/cohorts/5/count": 0,
+            "/cohorts/2/count": 2,
+            "/cohorts/6/count": 0,
+            "/cohorts/3/count": 5,
+            "/cohorts/7/count": 0,
+            "/cohorts/8/count": 10,
+            "/cohorts/12/count": 0,
+            "/cohorts/9/count": 9,
+            "/cohorts/13/count": 0,
+            "/cohorts/10/count": 4,
+            "/cohorts/14/count": 0,
+            "/cohorts/11/count": 9,
+            "/cohorts/15/count": 0
+          }
+        }
+      ]
+    }
+  ]
+}

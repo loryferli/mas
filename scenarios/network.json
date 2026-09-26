@@ -1,0 +1,233 @@
+{
+  "name": "network",
+  "tick_s": 1,
+  "max_time_s": 14400,
+  "road_detour_factor": 1.19,
+  "policy": "heuristic",
+  "environment": {
+    "stations": [
+      {
+        "name": "Aberystwyth",
+        "latitude": 52.4138938,
+        "longitude": -4.0815468,
+        "area_code": "W02000117"
+      },
+      {
+        "name": "Borth",
+        "latitude": 52.4909831,
+        "longitude": -4.0496662,
+        "area_code": "W02000116"
+      },
+      {
+        "name": "Bow Street",
+        "latitude": 52.4399137,
+        "longitude": -4.0303603,
+        "area_code": "W02000116"
+      },
+      {
+        "name": "Dolau",
+        "latitude": 52.4575073,
+        "longitude": -4.0145362,
+        "area_code": "W02000116"
+      },
+      {
+        "name": "Glan Rheidol",
+        "latitude": 52.4070764,
+        "longitude": -4.0698658,
+        "area_code": "W02000118"
+      },
+      {
+        "name": "Laura House",
+        "latitude": 52.2514218,
+        "longitude": -4.2281447,
+        "area_code": "W02000120"
+      },
+      {
+        "name": "Trawscoed Bridge",
+        "latitude": 52.3390087,
+        "longitude": -3.9578997,
+        "area_code": "W02000421"
+      }
+    ],
+    "construction": "free-form",
+    "flows": "data/flows.csv"
+  },
+  "cohorts": [
+    {
+      "kind": "CarpoolDriver",
+      "name": "drivers from Borth and Bow Street",
+      "count": 4,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.458826,
+        "longitude": -4.015868,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "CarpoolDriver",
+      "name": "drivers from Llanbadarn",
+      "count": 2,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.406129,
+        "longitude": -4.069442,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "CarpoolDriver",
+      "name": "drivers from the coast road south",
+      "count": 2,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.251938,
+        "longitude": -4.198067,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "CarpoolDriver",
+      "name": "drivers from the Rheidol and Ystwyth valleys",
+      "count": 5,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "riders from Borth and Bow Street",
+      "count": 10,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.458826,
+        "longitude": -4.015868,
+        "jitter_radius_km": 1.5
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "riders from Llanbadarn",
+      "count": 9,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.406129,
+        "longitude": -4.069442,
+        "jitter_radius_km": 1.5
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "riders from the coast road south",
+      "count": 4,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.251938,
+        "longitude": -4.198067,
+        "jitter_radius_km": 1.5
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "riders from the Rheidol and Ystwyth valleys",
+      "count": 9,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 1.5
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    }
+  ]
+}

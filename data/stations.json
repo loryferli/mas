@@ -1,0 +1,77 @@
+{
+  "source": "OpenStreetMap, queried through Overpass",
+  "licence": "Open Database Licence 1.0",
+  "attribution": "© OpenStreetMap contributors",
+  "corridor": [
+    "W02000116",
+    "W02000117",
+    "W02000118",
+    "W02000120",
+    "W02000421"
+  ],
+  "stations": [
+    {
+      "name": "Aberystwyth",
+      "latitude": 52.4138938,
+      "longitude": -4.0815468,
+      "area_code": "W02000117",
+      "kind": "rail",
+      "openstreetmap": "node/20946980",
+      "selected_by": "interchange in the corridor"
+    },
+    {
+      "name": "Borth",
+      "latitude": 52.4909831,
+      "longitude": -4.0496662,
+      "area_code": "W02000116",
+      "kind": "rail",
+      "openstreetmap": "node/20947034",
+      "selected_by": "interchange in the corridor"
+    },
+    {
+      "name": "Bow Street",
+      "latitude": 52.4399137,
+      "longitude": -4.0303603,
+      "area_code": "W02000116",
+      "kind": "rail",
+      "openstreetmap": "node/7455088478",
+      "selected_by": "interchange in the corridor"
+    },
+    {
+      "name": "Dolau",
+      "latitude": 52.4575073,
+      "longitude": -4.0145362,
+      "area_code": "W02000116",
+      "kind": "bus_stop",
+      "openstreetmap": "node/1922484537",
+      "selected_by": "nearest bus stop to the area's centroid"
+    },
+    {
+      "name": "Glan Rheidol",
+      "latitude": 52.4070764,
+      "longitude": -4.0698658,
+      "area_code": "W02000118",
+      "kind": "bus_stop",
+      "openstreetmap": "node/2576114414",
+      "selected_by": "nearest bus stop to the area's centroid"
+    },
+    {
+      "name": "Laura House",
+      "latitude": 52.2514218,
+      "longitude": -4.2281447,
+      "area_code": "W02000120",
+      "kind": "bus_stop",
+      "openstreetmap": "node/2543950547",
+      "selected_by": "nearest bus stop to the area's centroid"
+    },
+    {
+      "name": "Trawscoed Bridge",
+      "latitude": 52.3390087,
+      "longitude": -3.9578997,
+      "area_code": "W02000421",
+      "kind": "bus_stop",
+      "openstreetmap": "node/12151799709",
+      "selected_by": "nearest bus stop to the area's centroid"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "name": "margins bound an advance match, so they need one",
+  "environment": {
+    "stations": [
+      { "name": "Northgate Park and Ride", "latitude": 45.00, "longitude": 5.00 },
+      { "name": "Central Terminus", "latitude": 45.27, "longitude": 5.00 }
+    ],
+    "networks": [{
+      "name": "Valley Corridor",
+      "operator": "Valley Mobility",
+      "lines": [{ "origin": "Northgate Park and Ride", "destination": "Central Terminus" }]
+    }]
+  },
+  "cohorts": [{
+    "kind": "CarpoolRider",
+    "name": "flexible about a departure it never declared",
+    "count": 1,
+    "spawn_window": { "start_s": 0, "end_s": 0 },
+    "origin": { "latitude": 45.00, "longitude": 5.00 },
+    "destination": { "latitude": 45.27, "longitude": 5.00 },
+    "lateness_margin_s": 900
+  }]
+}

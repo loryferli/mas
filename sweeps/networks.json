@@ -1,0 +1,94 @@
+{
+  "scenario": "../scenarios/network.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "construction",
+      "points": [
+        {
+          "value": "free-form",
+          "set": {
+            "/environment/construction": "free-form"
+          }
+        },
+        {
+          "value": "delaunay",
+          "set": {
+            "/environment/construction": "delaunay"
+          }
+        },
+        {
+          "value": "minimum-spanning-tree",
+          "set": {
+            "/environment/construction": "minimum-spanning-tree"
+          }
+        },
+        {
+          "value": "flow-ranked",
+          "set": {
+            "/environment/construction": "flow-ranked"
+          }
+        },
+        {
+          "value": "flow-directed",
+          "set": {
+            "/environment/construction": "flow-directed"
+          }
+        }
+      ]
+    },
+    {
+      "name": "drivers",
+      "points": [
+        {
+          "value": 6,
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 1,
+            "/cohorts/2/count": 1,
+            "/cohorts/3/count": 2
+          }
+        },
+        {
+          "value": 13,
+          "set": {
+            "/cohorts/0/count": 4,
+            "/cohorts/1/count": 2,
+            "/cohorts/2/count": 2,
+            "/cohorts/3/count": 5
+          }
+        },
+        {
+          "value": 32,
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 6,
+            "/cohorts/2/count": 4,
+            "/cohorts/3/count": 12
+          }
+        },
+        {
+          "value": 66,
+          "set": {
+            "/cohorts/0/count": 20,
+            "/cohorts/1/count": 12,
+            "/cohorts/2/count": 9,
+            "/cohorts/3/count": 25
+          }
+        },
+        {
+          "value": 132,
+          "set": {
+            "/cohorts/0/count": 41,
+            "/cohorts/1/count": 24,
+            "/cohorts/2/count": 18,
+            "/cohorts/3/count": 49
+          }
+        }
+      ]
+    }
+  ]
+}

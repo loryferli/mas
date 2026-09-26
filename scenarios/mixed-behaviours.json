@@ -1,0 +1,221 @@
+{
+  "name": "mixed-behaviours",
+  "tick_s": 1,
+  "max_time_s": 14400,
+  "road_detour_factor": 1.19,
+  "environment": {
+    "stations": [
+      {
+        "name": "Aberystwyth",
+        "latitude": 52.4138938,
+        "longitude": -4.0815468
+      },
+      {
+        "name": "Borth",
+        "latitude": 52.4909831,
+        "longitude": -4.0496662
+      },
+      {
+        "name": "Bow Street",
+        "latitude": 52.4399137,
+        "longitude": -4.0303603
+      },
+      {
+        "name": "Dolau",
+        "latitude": 52.4575073,
+        "longitude": -4.0145362
+      },
+      {
+        "name": "Glan Rheidol",
+        "latitude": 52.4070764,
+        "longitude": -4.0698658
+      },
+      {
+        "name": "Laura House",
+        "latitude": 52.2514218,
+        "longitude": -4.2281447
+      },
+      {
+        "name": "Trawscoed Bridge",
+        "latitude": 52.3390087,
+        "longitude": -3.9578997
+      }
+    ],
+    "networks": [
+      {
+        "name": "Aberystwyth Corridor",
+        "operator": "Ceredigion Mobility",
+        "lines": [
+          {
+            "origin": "Trawscoed Bridge",
+            "destination": "Aberystwyth"
+          },
+          {
+            "origin": "Glan Rheidol",
+            "destination": "Aberystwyth"
+          }
+        ]
+      }
+    ]
+  },
+  "cohorts": [
+    {
+      "kind": "CarpoolDriver",
+      "name": "carpool drivers",
+      "count": 11,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "GhostDriver",
+      "name": "unregistered drivers",
+      "count": 16,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 4
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "OpportunisticDriver",
+      "name": "registered drivers without the app",
+      "count": 8,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "NeglectfulDriver",
+      "name": "signed up but never carrying",
+      "count": 8,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 3
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "PolynomialDriver",
+      "name": "pre-formed group, driver",
+      "count": 6,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 2
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 300,
+      "group_size": 1,
+      "vehicle": {
+        "capacity": 5
+      }
+    },
+    {
+      "kind": "CarpoolRider",
+      "name": "carpool riders",
+      "count": 6,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 1.5
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    },
+    {
+      "kind": "GhostRider",
+      "name": "walk-up riders",
+      "count": 3,
+      "spawn_window": {
+        "start_s": 0,
+        "end_s": 3600
+      },
+      "origin": {
+        "latitude": 52.341482,
+        "longitude": -3.977209,
+        "jitter_radius_km": 1
+      },
+      "destination": {
+        "latitude": 52.416115,
+        "longitude": -4.080168,
+        "jitter_radius_km": 1
+      },
+      "departure_offset_s": 0,
+      "max_walk_s": 2400
+    }
+  ]
+}

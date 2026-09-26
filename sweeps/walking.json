@@ -1,0 +1,91 @@
+{
+  "scenario": "../scenarios/baseline.json",
+  "seeds": {
+    "start": 1,
+    "count": 10
+  },
+  "axes": [
+    {
+      "name": "max_walk_s",
+      "points": [
+        {
+          "value": 1200,
+          "set": {
+            "/cohorts/4/max_walk_s": 1200,
+            "/cohorts/5/max_walk_s": 1200,
+            "/cohorts/6/max_walk_s": 1200,
+            "/cohorts/7/max_walk_s": 1200
+          }
+        },
+        {
+          "value": 1800,
+          "set": {
+            "/cohorts/4/max_walk_s": 1800,
+            "/cohorts/5/max_walk_s": 1800,
+            "/cohorts/6/max_walk_s": 1800,
+            "/cohorts/7/max_walk_s": 1800
+          }
+        },
+        {
+          "value": 2400,
+          "set": {
+            "/cohorts/4/max_walk_s": 2400,
+            "/cohorts/5/max_walk_s": 2400,
+            "/cohorts/6/max_walk_s": 2400,
+            "/cohorts/7/max_walk_s": 2400
+          }
+        },
+        {
+          "value": 3000,
+          "set": {
+            "/cohorts/4/max_walk_s": 3000,
+            "/cohorts/5/max_walk_s": 3000,
+            "/cohorts/6/max_walk_s": 3000,
+            "/cohorts/7/max_walk_s": 3000
+          }
+        },
+        {
+          "value": 3600,
+          "set": {
+            "/cohorts/4/max_walk_s": 3600,
+            "/cohorts/5/max_walk_s": 3600,
+            "/cohorts/6/max_walk_s": 3600,
+            "/cohorts/7/max_walk_s": 3600
+          }
+        }
+      ]
+    },
+    {
+      "name": "drivers",
+      "points": [
+        {
+          "value": 6,
+          "set": {
+            "/cohorts/0/count": 2,
+            "/cohorts/1/count": 1,
+            "/cohorts/2/count": 1,
+            "/cohorts/3/count": 2
+          }
+        },
+        {
+          "value": 13,
+          "set": {
+            "/cohorts/0/count": 4,
+            "/cohorts/1/count": 2,
+            "/cohorts/2/count": 2,
+            "/cohorts/3/count": 5
+          }
+        },
+        {
+          "value": 32,
+          "set": {
+            "/cohorts/0/count": 10,
+            "/cohorts/1/count": 6,
+            "/cohorts/2/count": 4,
+            "/cohorts/3/count": 12
+          }
+        }
+      ]
+    }
+  ]
+}

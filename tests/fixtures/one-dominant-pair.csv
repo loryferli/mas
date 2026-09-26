@@ -1,0 +1,4 @@
+origin_code,origin_name,origin_latitude,origin_longitude,destination_code,destination_name,destination_latitude,destination_longitude,total_count,work_at_home_count,metro_count,train_count,bus_count,taxi_count,motorcycle_count,car_driver_count,car_passenger_count,bicycle_count,on_foot_count,other_count
+A001,Alpha,45.00,5.00,A002,Beta,45.10,5.00,1000,0,0,0,0,0,0,900,100,0,0,0
+A001,Alpha,45.00,5.00,A003,Gamma,45.00,5.20,500,0,0,0,0,0,0,450,50,0,0,0
+A002,Beta,45.10,5.00,A003,Gamma,45.00,5.20,10,0,0,0,0,0,0,9,1,0,0,0
