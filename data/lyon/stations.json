@@ -1,0 +1,132 @@
+{
+  "stations": [
+    {
+      "name": "Bourgoin",
+      "latitude": 45.603004,
+      "longitude": 5.232401,
+      "source": "OpenStreetMap car_pooling 'La Grive P+R' (651201496)"
+    },
+    {
+      "name": "Mermoz",
+      "latitude": 45.730334,
+      "longitude": 4.888221,
+      "source": "OpenStreetMap car_pooling 'Lyon - Mermoz-Pinel' (7875697549)"
+    },
+    {
+      "name": "Villefranche-sur-Saone",
+      "latitude": 45.987181,
+      "longitude": 4.730673,
+      "source": "centroid of Villefranche-sur-Saône (69264)"
+    },
+    {
+      "name": "Anse",
+      "latitude": 45.942489,
+      "longitude": 4.708158,
+      "source": "centroid of Anse (69009)"
+    },
+    {
+      "name": "Limonest",
+      "latitude": 45.830863,
+      "longitude": 4.771221,
+      "source": "centroid of Limonest (69116)"
+    },
+    {
+      "name": "Lentilly",
+      "latitude": 45.812492,
+      "longitude": 4.670357,
+      "source": "centroid of Lentilly (69112)"
+    },
+    {
+      "name": "Fleurieux",
+      "latitude": 45.839601,
+      "longitude": 4.652168,
+      "source": "centroid of Fleurieux-sur-l'Arbresle (69086)"
+    },
+    {
+      "name": "Ecully",
+      "latitude": 45.781844,
+      "longitude": 4.772639,
+      "source": "centroid of Écully (69081)"
+    },
+    {
+      "name": "Caluire",
+      "latitude": 45.797651,
+      "longitude": 4.85157,
+      "source": "centroid of Caluire-et-Cuire (69034)"
+    },
+    {
+      "name": "Villeurbanne",
+      "latitude": 45.771031,
+      "longitude": 4.889045,
+      "source": "centroid of Villeurbanne (69266)"
+    },
+    {
+      "name": "Meyzieu",
+      "latitude": 45.777246,
+      "longitude": 5.006315,
+      "source": "centroid of Meyzieu (69282)"
+    },
+    {
+      "name": "Saint-Laurent-de-Mure",
+      "latitude": 45.683739,
+      "longitude": 5.06067,
+      "source": "centroid of Saint-Laurent-de-Mure (69288)"
+    },
+    {
+      "name": "Oullins",
+      "latitude": 45.715194,
+      "longitude": 4.803396,
+      "source": "centroid of Oullins (69149)"
+    },
+    {
+      "name": "Brignais",
+      "latitude": 45.677824,
+      "longitude": 4.752826,
+      "source": "centroid of Brignais (69027)"
+    },
+    {
+      "name": "Mornant",
+      "latitude": 45.616276,
+      "longitude": 4.673383,
+      "source": "centroid of Mornant (69141)"
+    },
+    {
+      "name": "Francheville",
+      "latitude": 45.73801,
+      "longitude": 4.756296,
+      "source": "centroid of Francheville (69089)"
+    },
+    {
+      "name": "Craponne",
+      "latitude": 45.746011,
+      "longitude": 4.727073,
+      "source": "centroid of Craponne (69069)"
+    },
+    {
+      "name": "Belleville",
+      "latitude": 46.115745,
+      "longitude": 4.726512,
+      "source": "centroid of Belleville-en-Beaujolais (69019)"
+    },
+    {
+      "name": "Saint-Priest",
+      "latitude": 45.701788,
+      "longitude": 4.948876,
+      "source": "centroid of Saint-Priest (69290)"
+    }
+  ],
+  "places": [
+    {
+      "name": "Bourgoin-Jallieu",
+      "latitude": 45.6025,
+      "longitude": 5.273881,
+      "source": "centroid of Bourgoin-Jallieu (38053)"
+    },
+    {
+      "name": "Lyon 8e",
+      "latitude": 45.733937,
+      "longitude": 4.868943,
+      "source": "centroid of Lyon 8e Arrondissement (69388)"
+    }
+  ]
+}
