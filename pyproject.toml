@@ -4,6 +4,7 @@ version = "0.1.0"
 description = "A multi-agent simulator for on-demand shared mobility on low-flow networks"
 readme = "README.md"
 requires-python = ">=3.12"
+license = "MIT"
 dependencies = [
     "anthropic",
     "matplotlib>=3.11.1",
