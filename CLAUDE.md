@@ -36,6 +36,11 @@ cargo clippy --all-targets -- -D warnings     # warnings are errors
 cargo fmt --check
 
 cargo test --test distributions               # one integration test file
+uvx ruff check analysis scripts               # the Python, with the rules pyproject.toml pins
+
+# every committed CSV and chart that needs nothing outside the repository, regenerated in place:
+# afterwards `git status --short` is empty, or a committed number has moved
+scripts/regenerate.sh
 cargo test the_same_seed_produces_the_same_run -- --exact --nocapture
 
 cargo run -- run --scenario scenarios/minimal.json --seed 42 --out /tmp/a

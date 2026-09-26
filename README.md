@@ -108,6 +108,8 @@ Also worth having:
 cargo clippy --all-targets -- -D warnings      # warnings are errors
 cargo fmt --check
 cargo test --test declaration                  # one integration test file
+uvx ruff check analysis scripts                # the Python, rules pinned in pyproject.toml
+scripts/regenerate.sh                          # every offline CSV and chart, then `git status`
 ```
 
 ## The study area
