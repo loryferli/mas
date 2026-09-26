@@ -1,6 +1,7 @@
 use anyhow::{Context, Result};
 use clap::{Parser, Subcommand, ValueEnum};
 use mas::events::EventLog;
+use mas::import::{self, Variant};
 use mas::incentives::{CompletedTrip, IncentiveScheme, Money, NoIncentive, PerPassengerKm};
 use mas::metrics::Metrics;
 use mas::policy::PolicyName;
@@ -100,6 +101,25 @@ enum Command {
         rate: Money,
     },
 
+    /// Translate a scenario from the agent-list format into this engine's own, and write it.
+    Import {
+        /// The agent-list scenario to translate.
+        source: PathBuf,
+
+        /// Where the translated scenario goes.
+        #[arg(long)]
+        out: PathBuf,
+
+        /// `as-ran` reproduces the format's own engine; `corrected` keeps its model without its
+        /// bugs.
+        #[arg(long, value_enum, default_value_t = Variant::AsRan)]
+        variant: Variant,
+
+        /// The study area's road detour factor, measured on its route cache.
+        #[arg(long, default_value_t = 1.3)]
+        road_detour_factor: f64,
+    },
+
     /// Fetch road geometry for every station pair in a scenario directory and write the cache.
     ///
     /// This is the only command that touches the network. Run it by hand and commit the result.
@@ -143,6 +163,29 @@ fn main() -> Result<()> {
         } => {
             let rows = sweep::run(&config, &out, &routes, scheme_for(incentive, rate).as_ref())?;
             eprintln!("wrote {} rows to {}", rows, out.display());
+            Ok(())
+        }
+        Command::Import {
+            source,
+            out,
+            variant,
+            road_detour_factor,
+        } => {
+            let text = std::fs::read_to_string(&source)
+                .with_context(|| format!("reading {}", source.display()))?;
+            let name = out.file_stem().map_or("imported".to_string(), |stem| {
+                stem.to_string_lossy().into_owned()
+            });
+            let (scenario, notes) = import::translate(&text, &name, variant, road_detour_factor)
+                .with_context(|| format!("translating {}", source.display()))?;
+            if let Some(parent) = out.parent() {
+                std::fs::create_dir_all(parent)?;
+            }
+            std::fs::write(&out, scenario).with_context(|| format!("writing {}", out.display()))?;
+            for note in notes {
+                eprintln!("note: {note}");
+            }
+            eprintln!("wrote {}", out.display());
             Ok(())
         }
         Command::BuildCache { scenarios, out } => build_cache(&scenarios, &out),

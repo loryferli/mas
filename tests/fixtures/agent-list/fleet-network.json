@@ -1,0 +1,702 @@
+{
+  "simulation": {
+    "start": {
+      "agents": [
+        {
+          "class": "AutonomousTaxiOrchestrator",
+          "name": "fleet operator",
+          "distribution": {
+            "count": 1,
+            "start": 0,
+            "end": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxi",
+          "name": "FleetTaxi",
+          "distribution": {
+            "count": 5,
+            "start": 21600,
+            "end": 21600
+          },
+          "origin": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 30
+          },
+          "vehicle": {
+            "capacity": 9
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider0_outbound",
+          "distribution": {
+            "count": 11,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider0__return",
+          "distribution": {
+            "count": 11,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider1_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider1__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider2_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider2__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        }
+      ]
+    },
+    "running": {}
+  },
+  "environment": {
+    "stations": [
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.987181,
+          "longitude": 4.730673
+        },
+        "name": "Villefranche-sur-Saone",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.942489,
+          "longitude": 4.708158
+        },
+        "name": "Anse",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.830863,
+          "longitude": 4.771221
+        },
+        "name": "Limonest",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.812492,
+          "longitude": 4.670357
+        },
+        "name": "Lentilly",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.839601,
+          "longitude": 4.652168
+        },
+        "name": "Fleurieux",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.781844,
+          "longitude": 4.772639
+        },
+        "name": "Ecully",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.797651,
+          "longitude": 4.85157
+        },
+        "name": "Caluire",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.771031,
+          "longitude": 4.889045
+        },
+        "name": "Villeurbanne",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.777246,
+          "longitude": 5.006315
+        },
+        "name": "Meyzieu",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.730334,
+          "longitude": 4.888221
+        },
+        "name": "Mermoz",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.715194,
+          "longitude": 4.803396
+        },
+        "name": "Oullins",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.677824,
+          "longitude": 4.752826
+        },
+        "name": "Brignais",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.616276,
+          "longitude": 4.673383
+        },
+        "name": "Mornant",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.73801,
+          "longitude": 4.756296
+        },
+        "name": "Francheville",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.746011,
+          "longitude": 4.727073
+        },
+        "name": "Craponne",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 46.115745,
+          "longitude": 4.726512
+        },
+        "name": "Belleville",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "fleet operator",
+        "coordinates": {
+          "latitude": 45.701788,
+          "longitude": 4.948876
+        },
+        "name": "Saint-Priest",
+        "radius": 1000
+      }
+    ],
+    "networks": [
+      {
+        "name": "network",
+        "orchestrator": "fleet operator",
+        "lines": [
+          {
+            "origin": "Anse",
+            "destination": "Limonest",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Anse",
+            "destination": "Villefranche-sur-Saone",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Brignais",
+            "destination": "Francheville",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Brignais",
+            "destination": "Mornant",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Brignais",
+            "destination": "Oullins",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Caluire",
+            "destination": "Ecully",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Caluire",
+            "destination": "Villeurbanne",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Craponne",
+            "destination": "Francheville",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Ecully",
+            "destination": "Francheville",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Ecully",
+            "destination": "Limonest",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Ecully",
+            "destination": "Oullins",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Fleurieux",
+            "destination": "Lentilly",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Lentilly",
+            "destination": "Limonest",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Mermoz",
+            "destination": "Oullins",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Mermoz",
+            "destination": "Villeurbanne",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Meyzieu",
+            "destination": "Villeurbanne",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Belleville",
+            "destination": "Villefranche-sur-Saone",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Mermoz",
+            "destination": "Saint-Priest",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Limonest",
+            "destination": "Anse",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Villefranche-sur-Saone",
+            "destination": "Anse",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Francheville",
+            "destination": "Brignais",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Mornant",
+            "destination": "Brignais",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Oullins",
+            "destination": "Brignais",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Ecully",
+            "destination": "Caluire",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Villeurbanne",
+            "destination": "Caluire",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Francheville",
+            "destination": "Craponne",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Francheville",
+            "destination": "Ecully",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Limonest",
+            "destination": "Ecully",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Oullins",
+            "destination": "Ecully",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Lentilly",
+            "destination": "Fleurieux",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Limonest",
+            "destination": "Lentilly",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Oullins",
+            "destination": "Mermoz",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Villeurbanne",
+            "destination": "Mermoz",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Villeurbanne",
+            "destination": "Meyzieu",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Villefranche-sur-Saone",
+            "destination": "Belleville",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          },
+          {
+            "origin": "Saint-Priest",
+            "destination": "Mermoz",
+            "polyline": "",
+            "color": [
+              255,
+              0,
+              0
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

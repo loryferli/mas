@@ -1,0 +1,242 @@
+{
+  "simulation": {
+    "start": {
+      "agents": [
+        {
+          "class": "CarpoolOrchestrator",
+          "name": "operator",
+          "distribution": {
+            "count": 1,
+            "start": 0,
+            "end": 0
+          }
+        },
+        {
+          "class": "CarpoolDriver",
+          "name": "carpool driver",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 5,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "CarpoolDriver",
+          "name": "carpool driver atc",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "atc": 600,
+            "incertitude": [
+              -60,
+              240
+            ],
+            "shift": 0,
+            "earliness_margin": 60,
+            "lateness_margin": 60
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 5,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "GhostDriver",
+          "name": "ghost",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 0,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "OpportunisticDriver",
+          "name": "opportunistic",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 0.5
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 0,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "GhostRider",
+          "name": "rider",
+          "origin": {
+            "latitude": 45.603004,
+            "longitude": 5.232401,
+            "neighborhood": 0.1
+          },
+          "destination": {
+            "latitude": 45.730334,
+            "longitude": 4.888221,
+            "neighborhood": 1
+          },
+          "departure_time_window": {
+            "shift": 0
+          },
+          "distribution": {
+            "count": 0,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "CarpoolRider",
+          "name": "carpool rider",
+          "origin": {
+            "latitude": 45.603004,
+            "longitude": 5.232401,
+            "neighborhood": 0.1
+          },
+          "destination": {
+            "latitude": 45.730334,
+            "longitude": 4.888221,
+            "neighborhood": 1
+          },
+          "departure_time_window": {
+            "shift": 0
+          },
+          "distribution": {
+            "count": 5,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "CarpoolRider",
+          "name": "carpool rider atp",
+          "origin": {
+            "latitude": 45.603004,
+            "longitude": 5.232401,
+            "neighborhood": 0.1
+          },
+          "destination": {
+            "latitude": 45.730334,
+            "longitude": 4.888221,
+            "neighborhood": 1
+          },
+          "departure_time_window": {
+            "atp": 300,
+            "incertitude": [
+              -180,
+              120
+            ],
+            "shift": 0,
+            "earliness_margin": 60,
+            "lateness_margin": 60
+          },
+          "distribution": {
+            "count": 5,
+            "start": 0,
+            "end": 3600
+          }
+        }
+      ]
+    },
+    "running": {}
+  },
+  "environment": {
+    "stations": [
+      {
+        "orchestrator": "operator",
+        "coordinates": {
+          "latitude": 45.603004,
+          "longitude": 5.232401
+        },
+        "name": "Bourgoin",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "operator",
+        "coordinates": {
+          "latitude": 45.730334,
+          "longitude": 4.888221
+        },
+        "name": "Mermoz",
+        "radius": 1000
+      }
+    ],
+    "networks": [
+      {
+        "name": "lane",
+        "orchestrator": "operator",
+        "lines": [
+          {
+            "origin": "Bourgoin",
+            "destination": "Mermoz",
+            "gd": {
+              "threshold": 1200,
+              "trigger": 1200,
+              "minimum_between_two_start": 1200,
+              "capacity": 8,
+              "coordinates": {
+                "latitude": 45.603004,
+                "longitude": 5.232401
+              }
+            }
+          }
+        ]
+      }
+    ]
+  }
+}

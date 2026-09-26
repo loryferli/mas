@@ -1,0 +1,202 @@
+{
+  "cohorts": [
+    {
+      "additional_passengers": {
+        "bernoulli": {
+          "p": 0.3333333333333333
+        }
+      },
+      "count": 0,
+      "departure_noise_s": 0.0,
+      "destination": {
+        "jitter_radius_km": 5.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "CarpoolDriver",
+      "name": "carpool driver",
+      "origin": {
+        "jitter_radius_km": 2.0,
+        "latitude": 45.733937,
+        "longitude": 4.868943
+      },
+      "rechain": true,
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      },
+      "station_approach": "on_demand",
+      "takes_unregistered_riders": true,
+      "vehicle": {
+        "capacity": 6
+      }
+    },
+    {
+      "additional_passengers": {
+        "bernoulli": {
+          "p": 0.3333333333333333
+        }
+      },
+      "count": 0,
+      "departure_noise_s": 0.0,
+      "destination": {
+        "jitter_radius_km": 5.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "CarpoolDriver",
+      "name": "carpool driver atc",
+      "origin": {
+        "jitter_radius_km": 2.0,
+        "latitude": 45.733937,
+        "longitude": 4.868943
+      },
+      "rechain": true,
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      },
+      "station_approach": "on_demand",
+      "takes_unregistered_riders": true,
+      "vehicle": {
+        "capacity": 6
+      }
+    },
+    {
+      "additional_passengers": {
+        "bernoulli": {
+          "p": 0.3333333333333333
+        }
+      },
+      "count": 0,
+      "destination": {
+        "jitter_radius_km": 5.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "GhostDriver",
+      "max_detour_pct": 110.0,
+      "name": "ghost",
+      "origin": {
+        "jitter_radius_km": 2.0,
+        "latitude": 45.733937,
+        "longitude": 4.868943
+      },
+      "perception_radius_km": 0.1,
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      },
+      "vehicle": {
+        "capacity": 6
+      }
+    },
+    {
+      "additional_passengers": {
+        "bernoulli": {
+          "p": 0.3333333333333333
+        }
+      },
+      "count": 10,
+      "destination": {
+        "jitter_radius_km": 5.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "OpportunisticDriver",
+      "max_detour_pct": 110.0,
+      "name": "opportunistic",
+      "origin": {
+        "jitter_radius_km": 2.0,
+        "latitude": 45.733937,
+        "longitude": 4.868943
+      },
+      "perception_radius_km": 0.1,
+      "registers": "after_first_pickup",
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      },
+      "station_approach": "on_demand",
+      "vehicle": {
+        "capacity": 6
+      }
+    },
+    {
+      "count": 0,
+      "destination": {
+        "jitter_radius_km": 1.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "GhostRider",
+      "max_wait_s": 1500.0,
+      "max_walk_s": 172800.0,
+      "name": "rider",
+      "origin": {
+        "jitter_radius_km": 0.1,
+        "latitude": 45.730334,
+        "longitude": 4.888221
+      },
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      }
+    },
+    {
+      "count": 10,
+      "departure_noise_s": 0.0,
+      "destination": {
+        "jitter_radius_km": 1.0,
+        "latitude": 45.603004,
+        "longitude": 5.232401
+      },
+      "kind": "CarpoolRider",
+      "max_wait_s": 172800.0,
+      "max_walk_s": 172800.0,
+      "name": "carpool rider",
+      "origin": {
+        "jitter_radius_km": 0.1,
+        "latitude": 45.730334,
+        "longitude": 4.888221
+      },
+      "spawn_window": {
+        "end_s": 3600.0,
+        "start_s": 0.0
+      }
+    }
+  ],
+  "drive_speed_mps": 20.0,
+  "environment": {
+    "networks": [
+      {
+        "lines": [
+          {
+            "destination": "Bourgoin",
+            "origin": "Mermoz"
+          }
+        ],
+        "name": "lane",
+        "operator": "operator"
+      }
+    ],
+    "stations": [
+      {
+        "latitude": 45.730334,
+        "longitude": 4.888221,
+        "name": "Mermoz"
+      },
+      {
+        "latitude": 45.603004,
+        "longitude": 5.232401,
+        "name": "Bourgoin"
+      }
+    ]
+  },
+  "max_time_s": 172800.0,
+  "name": "lane-mermoz",
+  "policy": "heuristic",
+  "road_detour_factor": 1.37,
+  "tick_s": 30.0,
+  "walk_speed_mps": 4.0
+}

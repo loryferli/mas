@@ -1,0 +1,166 @@
+{
+  "simulation": {
+    "start": {
+      "agents": [
+        {
+          "class": "Driver",
+          "name": "driver0_outbound",
+          "distribution": {
+            "count": 11,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        },
+        {
+          "class": "Driver",
+          "name": "driver0__return",
+          "distribution": {
+            "count": 11,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        },
+        {
+          "class": "Driver",
+          "name": "driver1_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        },
+        {
+          "class": "Driver",
+          "name": "driver1__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        },
+        {
+          "class": "Driver",
+          "name": "driver2_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        },
+        {
+          "class": "Driver",
+          "name": "driver2__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          },
+          "vehicle": {
+            "capacity": 5
+          }
+        }
+      ]
+    },
+    "running": {}
+  },
+  "environment": {}
+}

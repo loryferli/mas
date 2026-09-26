@@ -1,0 +1,178 @@
+{
+  "simulation": {
+    "start": {
+      "agents": [
+        {
+          "class": "AutonomousTaxiOrchestrator",
+          "name": "fleet operator",
+          "distribution": {
+            "count": 1,
+            "start": 0,
+            "end": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxi",
+          "name": "FleetTaxi",
+          "distribution": {
+            "count": 5,
+            "start": 21600,
+            "end": 21600
+          },
+          "origin": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 20
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider0_outbound",
+          "distribution": {
+            "count": 11,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider0__return",
+          "distribution": {
+            "count": 11,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.771031,
+            "longitude": 4.889045,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider1_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider1__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider2_outbound",
+          "distribution": {
+            "count": 9,
+            "start": 21600,
+            "end": 32400
+          },
+          "origin": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        },
+        {
+          "class": "AutonomousTaxiRider",
+          "name": "autonomoustaxirider2__return",
+          "distribution": {
+            "count": 9,
+            "start": 61200,
+            "end": 72000
+          },
+          "origin": {
+            "latitude": 45.701788,
+            "longitude": 4.948876,
+            "neighborhood": 10
+          },
+          "destination": {
+            "latitude": 45.704217,
+            "longitude": 4.881208,
+            "neighborhood": 10
+          },
+          "departure_time_window": {
+            "margin": 0,
+            "shift": 0
+          }
+        }
+      ]
+    },
+    "running": {}
+  },
+  "environment": {}
+}

@@ -1,0 +1,202 @@
+{
+  "simulation": {
+    "start": {
+      "agents": [
+        {
+          "class": "CarpoolOrchestrator",
+          "name": "operator",
+          "distribution": {
+            "count": 1,
+            "start": 0,
+            "end": 0
+          }
+        },
+        {
+          "class": "CarpoolDriver",
+          "name": "carpool driver",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 10
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 0,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "CarpoolDriver",
+          "name": "carpool driver atc",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 10
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 15,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "GhostDriver",
+          "name": "ghost",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 5
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 0,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "OpportunisticDriver",
+          "name": "opportunistic",
+          "origin": {
+            "latitude": 45.6025,
+            "longitude": 5.273881,
+            "neighborhood": 2
+          },
+          "destination": {
+            "latitude": 45.733937,
+            "longitude": 4.868943,
+            "neighborhood": 5
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 5
+          },
+          "vehicle": {
+            "capacity": 5
+          },
+          "distribution": {
+            "count": 10,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "GhostRider",
+          "name": "rider",
+          "origin": {
+            "latitude": 45.603004,
+            "longitude": 5.232401,
+            "neighborhood": 0.1
+          },
+          "destination": {
+            "latitude": 45.730334,
+            "longitude": 4.888221,
+            "neighborhood": 1
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 0
+          },
+          "distribution": {
+            "count": 10,
+            "start": 0,
+            "end": 3600
+          }
+        },
+        {
+          "class": "CarpoolRider",
+          "name": "carpool rider",
+          "origin": {
+            "latitude": 45.603004,
+            "longitude": 5.232401,
+            "neighborhood": 0.1
+          },
+          "destination": {
+            "latitude": 45.730334,
+            "longitude": 4.888221,
+            "neighborhood": 1
+          },
+          "departure_time_window": {
+            "shift": 0,
+            "margin": 10
+          },
+          "distribution": {
+            "count": 10,
+            "start": 0,
+            "end": 3600
+          }
+        }
+      ]
+    },
+    "running": {}
+  },
+  "environment": {
+    "stations": [
+      {
+        "orchestrator": "operator",
+        "coordinates": {
+          "latitude": 45.603004,
+          "longitude": 5.232401
+        },
+        "name": "Bourgoin",
+        "radius": 1000
+      },
+      {
+        "orchestrator": "operator",
+        "coordinates": {
+          "latitude": 45.730334,
+          "longitude": 4.888221
+        },
+        "name": "Mermoz",
+        "radius": 1000
+      }
+    ],
+    "networks": [
+      {
+        "name": "lane",
+        "orchestrator": "operator",
+        "lines": [
+          {
+            "origin": "Bourgoin",
+            "destination": "Mermoz"
+          }
+        ]
+      }
+    ]
+  }
+}

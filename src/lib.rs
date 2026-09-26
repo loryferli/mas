@@ -6,6 +6,7 @@
 pub mod agents;
 pub mod data;
 pub mod events;
+pub mod import;
 pub mod incentives;
 pub mod llm;
 pub mod metrics;
