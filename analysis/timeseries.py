@@ -28,7 +28,7 @@ import matplotlib
 matplotlib.use("svg")
 matplotlib.rcParams["svg.hashsalt"] = "mas-new"
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # noqa: E402 - after the backend is chosen
 
 IMAGES = Path(__file__).resolve().parent / "images"
 INTERVAL_S = 900
@@ -42,7 +42,9 @@ def read(path):
         for row in csv.DictReader(handle):
             t = float(row["t_s"])
             if row["seats_used"] != "":
-                vehicles[row["agent_id"]].append((t, int(row["seats_used"]), float(row["distance_km"])))
+                vehicles[row["agent_id"]].append(
+                    (t, int(row["seats_used"]), float(row["distance_km"]))
+                )
             else:
                 riders[row["agent_id"]].append((t, row["state"], row["reason"]))
     return vehicles, riders
@@ -68,7 +70,11 @@ def rider_times(riders):
                 since = None
             if state == "WaitingDriver" and since is None:
                 since = t
-        arrived = [t for t, state, reason in rows if state == "EndJourney" and reason == "ArrivedAtDestination"]
+        arrived = [
+            t
+            for t, state, reason in rows
+            if state == "EndJourney" and reason == "ArrivedAtDestination"
+        ]
         if arrived:
             journeys.append((arrived[-1] - spawned) / 60)
             waits.append(waited / 60)
@@ -98,8 +104,14 @@ def main():
             seat_km[bucket] += seats * distance
             km[bucket] += distance
         buckets = sorted(km)
-        axis.plot([b / 3600 for b in buckets], [seat_km[b] / km[b] for b in buckets], marker="o",
-                  markersize=2, linestyle="", label=label)
+        axis.plot(
+            [b / 3600 for b in buckets],
+            [seat_km[b] / km[b] for b in buckets],
+            marker="o",
+            markersize=2,
+            linestyle="",
+            label=label,
+        )
     axis.set_xlabel("time of day (h)")
     axis.set_ylabel("occupancy (seats in use per km)")
     axis.set_title("Vehicle occupancy by 15-minute intervals, weighted by distance")
@@ -107,7 +119,9 @@ def main():
     axis.grid(linestyle="--", alpha=0.5)
     save(figure, IMAGES / f"{name}-occupancy.svg", caption)
 
-    figure, axes = plt.subplots(1, len(data), figsize=(5 * len(data), 4.5), sharey=True, squeeze=False)
+    figure, axes = plt.subplots(
+        1, len(data), figsize=(5 * len(data), 4.5), sharey=True, squeeze=False
+    )
     for axis, (label, (vehicles, _)) in zip(axes[0], data):
         # Summed by the minute: a point per leg would make a figure of megabytes.
         by_minute_total, by_minute_loaded = defaultdict(float), defaultdict(float)

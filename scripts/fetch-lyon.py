@@ -14,7 +14,7 @@ rule; this script is its executable half, so a rule changed here changes there t
 Three sources, all open, none reached during a run:
 
   * the flows       INSEE, recensement 2021, fichier détail MOBPRO, Licence Ouverte 2.0
-  * the centroids   Etalab contours administratifs 2021 (from IGN Admin Express), Licence Ouverte 2.0
+  * the centroids   Etalab contours administratifs 2021 (IGN Admin Express), Licence Ouverte 2.0
   * two stops       OpenStreetMap via Overpass, Open Database Licence 1.0
 """
 
@@ -106,7 +106,9 @@ def haversine_km(a, b) -> float:
 def centroid(geometry) -> tuple[float, float]:
     """The area centroid of a polygon or multipolygon, holes subtracted, on plain degrees. At a
     commune's size the projection error is metres, well inside the rounding written out."""
-    polygons = geometry["coordinates"] if geometry["type"] == "MultiPolygon" else [geometry["coordinates"]]
+    polygons = (
+        geometry["coordinates"] if geometry["type"] == "MultiPolygon" else [geometry["coordinates"]]
+    )
     area = sum_x = sum_y = 0.0
     for polygon in polygons:
         for index, ring in enumerate(polygon):
@@ -165,17 +167,37 @@ def write_flows(places, flows) -> None:
     kept.sort()
     with open(DATA / "flows.csv", "w", newline="") as handle:
         writer = csv.writer(handle, lineterminator="\n")
-        writer.writerow([
-            "rank", "origin_code", "origin_name", "origin_latitude", "origin_longitude",
-            "destination_code", "destination_name", "destination_latitude",
-            "destination_longitude", "distance_km", "motorised_flow",
-        ])
+        writer.writerow(
+            [
+                "rank",
+                "origin_code",
+                "origin_name",
+                "origin_latitude",
+                "origin_longitude",
+                "destination_code",
+                "destination_name",
+                "destination_latitude",
+                "destination_longitude",
+                "distance_km",
+                "motorised_flow",
+            ]
+        )
         for rank, (flow, home, work, distance) in enumerate(kept[:PAIRS]):
-            writer.writerow([
-                rank, home, places[home][0], f"{places[home][1]:.6f}", f"{places[home][2]:.6f}",
-                work, places[work][0], f"{places[work][1]:.6f}", f"{places[work][2]:.6f}",
-                f"{distance:.3f}", f"{-flow:.3f}",
-            ])
+            writer.writerow(
+                [
+                    rank,
+                    home,
+                    places[home][0],
+                    f"{places[home][1]:.6f}",
+                    f"{places[home][2]:.6f}",
+                    work,
+                    places[work][0],
+                    f"{places[work][1]:.6f}",
+                    f"{places[work][2]:.6f}",
+                    f"{distance:.3f}",
+                    f"{-flow:.3f}",
+                ]
+            )
     print(f"flows.csv: {min(PAIRS, len(kept))} of {len(kept)} qualifying pairs")
 
 
@@ -197,23 +219,35 @@ def write_stations(places) -> None:
     stations = []
     for name, (osm_name, box) in STOPS.items():
         latitude, longitude, osm_id = fetch_stop(osm_name, box)
-        stations.append({
-            "name": name, "latitude": round(latitude, 6), "longitude": round(longitude, 6),
-            "source": f"OpenStreetMap car_pooling {osm_name!r} ({osm_id})",
-        })
+        stations.append(
+            {
+                "name": name,
+                "latitude": round(latitude, 6),
+                "longitude": round(longitude, 6),
+                "source": f"OpenStreetMap car_pooling {osm_name!r} ({osm_id})",
+            }
+        )
     for name, code in NETWORK_COMMUNES.items():
         commune, latitude, longitude = places[code]
-        stations.append({
-            "name": name, "latitude": round(latitude, 6), "longitude": round(longitude, 6),
-            "source": f"centroid of {commune} ({code})",
-        })
+        stations.append(
+            {
+                "name": name,
+                "latitude": round(latitude, 6),
+                "longitude": round(longitude, 6),
+                "source": f"centroid of {commune} ({code})",
+            }
+        )
     anchors = []
     for name, code in LANE_PLACES.items():
         commune, latitude, longitude = places[code]
-        anchors.append({
-            "name": name, "latitude": round(latitude, 6), "longitude": round(longitude, 6),
-            "source": f"centroid of {commune} ({code})",
-        })
+        anchors.append(
+            {
+                "name": name,
+                "latitude": round(latitude, 6),
+                "longitude": round(longitude, 6),
+                "source": f"centroid of {commune} ({code})",
+            }
+        )
     document = {"stations": stations, "places": anchors}
     (DATA / "stations.json").write_text(json.dumps(document, indent=2, ensure_ascii=False) + "\n")
     print(f"stations.json: {len(stations)} stations, {len(anchors)} places")

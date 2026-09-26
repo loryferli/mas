@@ -97,10 +97,7 @@ def haversine_km(a, b) -> float:
     radius_km = 6371.0088
     lat_a, lat_b = math.radians(a[0]), math.radians(b[0])
     d_lat, d_lon = lat_b - lat_a, math.radians(b[1] - a[1])
-    h = (
-        math.sin(d_lat / 2) ** 2
-        + math.cos(lat_a) * math.cos(lat_b) * math.sin(d_lon / 2) ** 2
-    )
+    h = math.sin(d_lat / 2) ** 2 + math.cos(lat_a) * math.cos(lat_b) * math.sin(d_lon / 2) ** 2
     return 2 * radius_km * math.asin(math.sqrt(h))
 
 
@@ -261,12 +258,8 @@ def write_flows(centroids) -> None:
 
 
 def overpass_query(boundaries) -> str:
-    latitudes = [
-        point[1] for code in CORRIDOR for ring in boundaries[code] for point in ring
-    ]
-    longitudes = [
-        point[0] for code in CORRIDOR for ring in boundaries[code] for point in ring
-    ]
+    latitudes = [point[1] for code in CORRIDOR for ring in boundaries[code] for point in ring]
+    longitudes = [point[0] for code in CORRIDOR for ring in boundaries[code] for point in ring]
     box = (
         f"{min(latitudes) - BBOX_PAD_DEGREES:.4f},{min(longitudes) - BBOX_PAD_DEGREES:.4f},"
         f"{max(latitudes) + BBOX_PAD_DEGREES:.4f},{max(longitudes) + BBOX_PAD_DEGREES:.4f}"
@@ -345,9 +338,7 @@ def write_stations(centroids, boundaries) -> None:
         nearest = min(
             candidates,
             key=lambda stop: (
-                haversine_km(
-                    (latitude, longitude), (stop["latitude"], stop["longitude"])
-                ),
+                haversine_km((latitude, longitude), (stop["latitude"], stop["longitude"])),
                 stop["name"] or "",
             ),
         )
@@ -361,10 +352,7 @@ def write_stations(centroids, boundaries) -> None:
     stations = []
     for station in chosen:
         here = (station["latitude"], station["longitude"])
-        if any(
-            haversine_km(here, (k["latitude"], k["longitude"])) < DEDUPE_KM
-            for k in stations
-        ):
+        if any(haversine_km(here, (k["latitude"], k["longitude"])) < DEDUPE_KM for k in stations):
             continue
         stations.append(station)
     stations.sort(key=lambda s: s["name"])

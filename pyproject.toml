@@ -16,3 +16,11 @@ reference = [
     "networkx",
     "numpy",
 ]
+
+# `uvx ruff check analysis scripts`: pyflakes, pycodestyle and import order, and nothing a
+# per-user configuration could add.
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I"]

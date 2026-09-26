@@ -13,7 +13,7 @@ with the reason it is needed. A patch either removes something that cannot work 
 it fast without changing what it computes - and the last kind is checked, not trusted: `run.py
 --naive-perception` runs the original perception and the two event logs must be identical.
 
-The metrics are this repository's columns (`src/metrics.rs`), with the engine's own notebooks' reading
+The metrics are this repository's columns (`src/metrics.rs`), with the engine's notebooks' reading
 wherever the two models differ in what they have: a party counts in full, a private driver's own
 companion is its party rather than a rider, occupancy is passenger-kilometres over vehicle-
 kilometres. Four trailing columns carry what only the notebooks report - see `EXTRA_COLUMNS`.
@@ -26,7 +26,6 @@ import random
 import sys
 import types
 from collections import defaultdict
-from pathlib import Path
 
 # Where each engine is checked out: `run.py --lane-engine/--fleet-engine`, or these variables.
 ENGINE_VARIABLES = {"lane": "MAS_LANE_ENGINE", "fleet": "MAS_FLEET_ENGINE"}
@@ -44,7 +43,8 @@ DEFAULT_ROAD_DETOUR_FACTOR = 1.3
 FOOT_PROFILES = {"foot"}
 
 PATCHES = [
-    "routing: `get_route` is a straight line whose duration is stretched by the road detour factor, "
+    "routing: `get_route` is a straight line whose duration is stretched by the road detour "
+    "factor, "
     "the Rust fallback's rule; the GraphHopper server it called no longer answers",
     "movement: a body on a road route moves at its speed over the detour factor, so the route's "
     "duration is the time it takes - as the Rust fallback's journey does",
@@ -56,11 +56,13 @@ PATCHES = [
     "console and log files: stdout is discarded and the four loggers write nowhere; the harness "
     "records state transitions itself",
     "imports that are never reached offline are stubbed: geopy and requests (the live router), "
-    "shapely (imported, unused), time_aware_polyline (lane engine, imported, unused), and polyline, "
+    "shapely (imported, unused), time_aware_polyline (lane engine, imported, unused), and "
+    "polyline, "
     "which only decodes a line's display geometry and raised on lane.json's placeholder string",
-    "lane engine: the three fleet modules its simulation.py imports did not exist at that commit, and are "
+    "lane engine: the three fleet modules its simulation.py imports are not in it, and are "
     "empty placeholders",
-    "lane engine: `CarpoolOrchestrator`, the class the scenarios name, is the lane engine's `Orchestrator`",
+    "lane engine: `CarpoolOrchestrator`, the class the scenarios name, is the lane engine's "
+    "`Orchestrator`",
     "lane engine: `Driver.offer` defaults to None; the lane engine never sets it, so the first "
     "`update_state` of any driver raised AttributeError",
     "lane engine: a body starts with a four-seat `Vehicle` so the one-in-three companion drawn in "
@@ -76,8 +78,8 @@ EXTRA_COLUMNS = [
     "private_drivers_arrived",
     "private_party_km",
     # The engine's metrics notebook excludes cancelled riders by matching the state "CANCEL", which
-    # the engine never logs ("CANCELED"), so the published satisfaction rate counted a rider who gave
-    # up and was sent home as served. This is that count, beside the correct one in
+    # the engine never logs ("CANCELED"), so the published satisfaction rate counted a rider who
+    # gave up and was sent home as served. This is that count, beside the correct one in
     # passengers_served.
     "passengers_served_as_published",
     # The engine's taxi, in its fallback branch, boards a rider for another destination without
@@ -191,7 +193,7 @@ def install(tree, engine, detour_factor, naive_perception):
     sys.modules["polyline"] = stub
 
     if tree == "lane":
-        # The lane engine's simulation.py imports the fleet modules, which did not exist at that commit.
+        # The lane engine's simulation.py imports the fleet modules, which it does not have.
         for name in ("autonomous_taxi_orchestrator", "autonomous_taxi_rider", "autonomous_taxi"):
             module = types.ModuleType(f"sma.agent.{name}")
             placeholder = "".join(part.capitalize() for part in name.split("_"))
@@ -202,11 +204,11 @@ def install(tree, engine, detour_factor, naive_perception):
     sys.path.insert(0, str(engine))
     with contextlib.redirect_stdout(io.StringIO()):
         import simulation  # noqa: F401 - imports every agent module, which the patches need
+    from helper.agent_type import inspect_gents_dict
+    from helper.vector2 import Vector2
     from sma.agent.agent import Agent
     from sma.body.body import Body
     from sma.environment.environment import Environment
-    from helper.agent_type import inspect_gents_dict
-    from helper.vector2 import Vector2
 
     def angle(vector, other):
         lengths = vector.getLength() * other.getLength()
@@ -233,9 +235,13 @@ def install(tree, engine, detour_factor, naive_perception):
     ledger = Ledger()
     grid = Grid()
 
-    def get_route(origin, destination, path=None, detour=None, profile="car", service="graphhopper", speed=4):
+    def get_route(
+        origin, destination, path=None, detour=None, profile="car", service="graphhopper", speed=4
+    ):
         if path:
-            raise RuntimeError("a replayed GPS path reached the router; no committed scenario has one")
+            raise RuntimeError(
+                "a replayed GPS path reached the router; no committed scenario has one"
+            )
         factor = 1.0 if profile in FOOT_PROFILES else detour_factor
         stops = [origin] + ([detour] if detour is not None else []) + [destination]
         points = [[stops[0]["latitude"], stops[0]["longitude"], 0]]
@@ -327,7 +333,8 @@ def install(tree, engine, detour_factor, naive_perception):
         path += [[p[0], p[1]] for p in points[:consumed]]
         path.append([body.coordinates["latitude"], body.coordinates["longitude"]])
         km = sum(distance(a, b) for a, b in zip(path, path[1:]))
-        # A lane-engine body always has a vehicle (a patch above), so a walker is told apart by its class.
+        # A lane-engine body always has a vehicle (a patch above), so a walker is told apart by its
+        # class.
         if km == 0 or body.vehicle is None or type(body.parent).__name__ in RIDER_CLASSES:
             return
         driver = body.parent
@@ -384,9 +391,12 @@ def install(tree, engine, detour_factor, naive_perception):
                     body.distance_to = dist
                     seen.append((order, body))
             seen.sort(key=lambda pair: pair[0])
-            orchestrators = [o for o in env.agents if isinstance(o, Orchestrator) and o.uuid != agent.uuid]
+            orchestrators = [
+                o for o in env.agents if isinstance(o, Orchestrator) and o.uuid != agent.uuid
+            ]
             agent.perceptions_agents = [body for _, body in seen] + orchestrators
-            # Fustrum.inside returns a tuple, which is always true: every agent perceives every item.
+            # Fustrum.inside returns a tuple, which is always true: every agent perceives every
+            # item.
             agent.perceptions_items = env.items[:]
 
         Environment.compute_perception = compute_perception
@@ -420,10 +430,18 @@ def quiet_loggers():
         log.propagate = False
 
 
-def run(tree, engine, scenario, seed, detour_factor=DEFAULT_ROAD_DETOUR_FACTOR,
-        clock_cap_s=DEFAULT_CLOCK_CAP_S, naive_perception=False, events=None):
-    """One run of `tree` ("lane" or "fleet") from the checkout at `engine`. Returns the metrics row as
-    a dict, and writes the transitions to `events` if given."""
+def run(
+    tree,
+    engine,
+    scenario,
+    seed,
+    detour_factor=DEFAULT_ROAD_DETOUR_FACTOR,
+    clock_cap_s=DEFAULT_CLOCK_CAP_S,
+    naive_perception=False,
+    events=None,
+):
+    """One run of `tree` ("lane" or "fleet") from the checkout at `engine`. Returns the metrics row
+    as a dict, and writes the transitions to `events` if given."""
     world = install(tree, engine, detour_factor, naive_perception)
     quiet_loggers()
     random.seed(seed)
@@ -439,7 +457,11 @@ def run(tree, engine, scenario, seed, detour_factor=DEFAULT_ROAD_DETOUR_FACTOR,
         for agent in env.agents:
             if not hasattr(agent, "body") or agent.is_freeze:
                 continue
-            if type(agent).__name__ == "AutonomousTaxi" and agent.state == "IDLE" and not agent.inbox:
+            if (
+                type(agent).__name__ == "AutonomousTaxi"
+                and agent.state == "IDLE"
+                and not agent.inbox
+            ):
                 continue
             return False
         return True
@@ -489,7 +511,9 @@ def reduce(ledger, stopped_by_clock):
         return total
 
     def arrived_s(agent):
-        return max(clock for clock, state in ledger.transitions[id(agent)] if state == "END_JOURNEY")
+        return max(
+            clock for clock, state in ledger.transitions[id(agent)] if state == "END_JOURNEY"
+        )
 
     carried = [r for r in riders if id(r) in ledger.carried_by]
     arrived = [r for r in riders if served(r)]
@@ -524,7 +548,8 @@ def reduce(ledger, stopped_by_clock):
         "mean_occupancy": ratio(ledger.passenger_km, km_total),
         "mean_wait_s": mean(waited_s(r) for r in carried),
         "mean_journey_time_s": mean(arrived_s(r) - r.spawn_time for r in arrived),
-        "taxi_km_empty_to_pickup": 0.0 + sum(ledger.km[id(t)] - ledger.loaded_km[id(t)] for t in fleet),
+        "taxi_km_empty_to_pickup": 0.0
+        + sum(ledger.km[id(t)] - ledger.loaded_km[id(t)] for t in fleet),
         "mean_time_to_pickup_s": mean(waited_s(r) for r in by_taxi),
         "fleet_utilisation": ratio(sum(1 for t in fleet if id(t) in active), len(fleet)),
         "incentive_paid": 0.0,

@@ -82,9 +82,7 @@ def flows_by_area() -> tuple[dict, dict]:
             names[row["destination_code"]] = row["destination_name"]
             key = (row["origin_code"], row["destination_code"])
             counts[key] = (
-                counts.get(key, 0)
-                + int(row["car_driver_count"])
-                + int(row["car_passenger_count"])
+                counts.get(key, 0) + int(row["car_driver_count"]) + int(row["car_passenger_count"])
             )
     return counts, names
 
@@ -103,11 +101,7 @@ def brief_context() -> dict:
             }
             for station in stations["stations"]
         ],
-        "areas": [
-            {"code": code, "name": name}
-            for code, name in names.items()
-            if code in corridor
-        ],
+        "areas": [{"code": code, "name": name} for code, name in names.items() if code in corridor],
         "car_commutes": [
             {"from_area": origin, "to_area": destination, "people": people}
             for (origin, destination), people in counts.items()

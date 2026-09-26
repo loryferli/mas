@@ -67,7 +67,12 @@ STATION_RADIUS_M = 1000
 LINE_DISPLAY = {"polyline": "", "color": [255, 0, 0]}
 FLEET_SPAWN_S = 21600
 # (share of each pair's flow, pairs kept). `ceil(flow x share)` per cohort, so no pair is empty.
-SAMPLES = {"10": (0.075, 1000), "100": (0.0075, 1000), "200": (0.0075, 250), "complete": (1.0, 1000)}
+SAMPLES = {
+    "10": (0.075, 1000),
+    "100": (0.0075, 1000),
+    "200": (0.0075, 250),
+    "complete": (1.0, 1000),
+}
 SERVICES = {
     # service: {sample: fleet size}, seats, fleet spawn jitter
     "fleet-door-to-door": ({"10": 9000, "100": 450, "complete": 90000}, 5, 20),
@@ -78,24 +83,52 @@ PRIVATE_SAMPLES = ["10", "100", "complete"]
 # The seventeen-station network as undirected pairs; each is two directed lines. The 100 sample
 # ran a variant with Belleville and Saint-Priest in place of Bourgoin and Saint-Laurent-de-Mure.
 NETWORK_PAIRS = [
-    ("Anse", "Limonest"), ("Anse", "Villefranche-sur-Saone"), ("Brignais", "Francheville"),
-    ("Brignais", "Mornant"), ("Brignais", "Oullins"), ("Caluire", "Ecully"),
-    ("Caluire", "Villeurbanne"), ("Craponne", "Francheville"), ("Ecully", "Francheville"),
-    ("Ecully", "Limonest"), ("Ecully", "Oullins"), ("Fleurieux", "Lentilly"),
-    ("Lentilly", "Limonest"), ("Mermoz", "Oullins"), ("Mermoz", "Villeurbanne"),
+    ("Anse", "Limonest"),
+    ("Anse", "Villefranche-sur-Saone"),
+    ("Brignais", "Francheville"),
+    ("Brignais", "Mornant"),
+    ("Brignais", "Oullins"),
+    ("Caluire", "Ecully"),
+    ("Caluire", "Villeurbanne"),
+    ("Craponne", "Francheville"),
+    ("Ecully", "Francheville"),
+    ("Ecully", "Limonest"),
+    ("Ecully", "Oullins"),
+    ("Fleurieux", "Lentilly"),
+    ("Lentilly", "Limonest"),
+    ("Mermoz", "Oullins"),
+    ("Mermoz", "Villeurbanne"),
     ("Meyzieu", "Villeurbanne"),
 ]
 NETWORK_EAST = [("Bourgoin", "Saint-Laurent-de-Mure"), ("Mermoz", "Saint-Laurent-de-Mure")]
 NETWORK_VARIANT = [("Belleville", "Villefranche-sur-Saone"), ("Mermoz", "Saint-Priest")]
 NETWORK_ORDER = [
-    "Villefranche-sur-Saone", "Anse", "Limonest", "Lentilly", "Fleurieux", "Ecully", "Caluire",
-    "Villeurbanne", "Meyzieu", "Mermoz", "Saint-Laurent-de-Mure", "Bourgoin", "Oullins",
-    "Brignais", "Mornant", "Francheville", "Craponne",
+    "Villefranche-sur-Saone",
+    "Anse",
+    "Limonest",
+    "Lentilly",
+    "Fleurieux",
+    "Ecully",
+    "Caluire",
+    "Villeurbanne",
+    "Meyzieu",
+    "Mermoz",
+    "Saint-Laurent-de-Mure",
+    "Bourgoin",
+    "Oullins",
+    "Brignais",
+    "Mornant",
+    "Francheville",
+    "Craponne",
 ]
 
 
 def point(place, jitter_km):
-    return {"latitude": place["latitude"], "longitude": place["longitude"], "neighborhood": jitter_km}
+    return {
+        "latitude": place["latitude"],
+        "longitude": place["longitude"],
+        "neighborhood": jitter_km,
+    }
 
 
 def coordinates(place):
@@ -128,8 +161,12 @@ def lane_environment(stations, origin, destination, guarantee):
         line["gd"] = {**GUARANTEE, "coordinates": coordinates(stations[origin])}
     return {
         "stations": [
-            {"orchestrator": "operator", "coordinates": coordinates(stations[name]), "name": name,
-             "radius": STATION_RADIUS_M}
+            {
+                "orchestrator": "operator",
+                "coordinates": coordinates(stations[name]),
+                "name": name,
+                "radius": STATION_RADIUS_M,
+            }
             for name in (origin, destination)
         ],
         "networks": [{"name": "lane", "orchestrator": "operator", "lines": [line]}],
@@ -143,23 +180,31 @@ def lane_bourgoin(stations, places):
 
     def driver(kind, name, count, window):
         return {
-            "class": kind, "name": name,
+            "class": kind,
+            "name": name,
             "origin": point(home, DRIVER_JITTER_KM["origin"]),
             "destination": point(work, DRIVER_JITTER_KM["destination"]),
-            "departure_time_window": window, "vehicle": {"capacity": CAR_SEATS},
+            "departure_time_window": window,
+            "vehicle": {"capacity": CAR_SEATS},
             "distribution": distribution(count, LANE_WINDOW_S),
         }
 
     def rider(kind, name, count, window):
         return {
-            "class": kind, "name": name,
+            "class": kind,
+            "name": name,
             "origin": point(station, RIDER_JITTER_KM["origin"]),
             "destination": point(arrival, RIDER_JITTER_KM["destination"]),
-            "departure_time_window": window, "distribution": distribution(count, LANE_WINDOW_S),
+            "departure_time_window": window,
+            "distribution": distribution(count, LANE_WINDOW_S),
         }
 
     agents = [
-        {"class": "CarpoolOrchestrator", "name": "operator", "distribution": distribution(1, (0, 0))},
+        {
+            "class": "CarpoolOrchestrator",
+            "name": "operator",
+            "distribution": distribution(1, (0, 0)),
+        },
         driver("CarpoolDriver", "carpool driver", 0, {"shift": 0, "margin": 10}),
         driver("CarpoolDriver", "carpool driver atc", 15, {"shift": 0, "margin": 10}),
         driver("GhostDriver", "ghost", 0, {"shift": 0, "margin": 5}),
@@ -176,23 +221,31 @@ def lane_mermoz(stations, places):
 
     def driver(kind, name, count, window):
         return {
-            "class": kind, "name": name,
+            "class": kind,
+            "name": name,
             "origin": point(home, DRIVER_JITTER_KM["origin"]),
             "destination": point(arrival, DRIVER_JITTER_KM["destination"]),
-            "departure_time_window": window, "vehicle": {"capacity": CAR_SEATS},
+            "departure_time_window": window,
+            "vehicle": {"capacity": CAR_SEATS},
             "distribution": distribution(count, LANE_WINDOW_S),
         }
 
     def rider(kind, name, count, window):
         return {
-            "class": kind, "name": name,
+            "class": kind,
+            "name": name,
             "origin": point(station, RIDER_JITTER_KM["origin"]),
             "destination": point(arrival, RIDER_JITTER_KM["destination"]),
-            "departure_time_window": window, "distribution": distribution(count, LANE_WINDOW_S),
+            "departure_time_window": window,
+            "distribution": distribution(count, LANE_WINDOW_S),
         }
 
     agents = [
-        {"class": "CarpoolOrchestrator", "name": "operator", "distribution": distribution(1, (0, 0))},
+        {
+            "class": "CarpoolOrchestrator",
+            "name": "operator",
+            "distribution": distribution(1, (0, 0)),
+        },
         driver("CarpoolDriver", "carpool driver", 0, {"shift": 0, "margin": 10}),
         driver("CarpoolDriver", "carpool driver atc", 0, {"shift": 0, "margin": 10}),
         driver("GhostDriver", "ghost", 0, {"shift": 0, "margin": 5}),
@@ -210,30 +263,46 @@ def grid_template(stations, places, setting):
 
     def driver(kind, name, window, origin_jitter=DRIVER_JITTER_KM["origin"]):
         return {
-            "class": kind, "name": name, "origin": point(home, origin_jitter),
+            "class": kind,
+            "name": name,
+            "origin": point(home, origin_jitter),
             "destination": point(work, DRIVER_JITTER_KM["destination"]),
-            "departure_time_window": window, "vehicle": {"capacity": CAR_SEATS},
+            "departure_time_window": window,
+            "vehicle": {"capacity": CAR_SEATS},
             "distribution": distribution(0, LANE_WINDOW_S),
         }
 
     def rider(kind, name, window):
         return {
-            "class": kind, "name": name,
+            "class": kind,
+            "name": name,
             "origin": point(station, RIDER_JITTER_KM["origin"]),
             "destination": point(arrival, RIDER_JITTER_KM["destination"]),
-            "departure_time_window": window, "distribution": distribution(0, LANE_WINDOW_S),
+            "departure_time_window": window,
+            "distribution": distribution(0, LANE_WINDOW_S),
         }
 
     def declaring(key, lead, noise):
-        return {key: lead, "incertitude": list(noise), "shift": 0, "earliness_margin": early,
-                "lateness_margin": late}
+        return {
+            key: lead,
+            "incertitude": list(noise),
+            "shift": 0,
+            "earliness_margin": early,
+            "lateness_margin": late,
+        }
 
     agents = [
-        {"class": "CarpoolOrchestrator", "name": "operator", "distribution": distribution(0, (0, 0))},
+        {
+            "class": "CarpoolOrchestrator",
+            "name": "operator",
+            "distribution": distribution(0, (0, 0)),
+        },
         driver("CarpoolDriver", "carpool driver", {"shift": 0}),
         driver("CarpoolDriver", "carpool driver atc", declaring("atc", driver_lead, driver_noise)),
         driver("GhostDriver", "ghost", {"shift": 0}),
-        driver("OpportunisticDriver", "opportunistic", {"shift": 0}, OPPORTUNISTIC_ORIGIN_JITTER_KM),
+        driver(
+            "OpportunisticDriver", "opportunistic", {"shift": 0}, OPPORTUNISTIC_ORIGIN_JITTER_KM
+        ),
         rider("GhostRider", "rider", {"shift": 0}),
         rider("CarpoolRider", "carpool rider", {"shift": 0}),
         rider("CarpoolRider", "carpool rider atp", declaring("atp", rider_lead, rider_noise)),
@@ -258,7 +327,10 @@ def grid(template):
                         agent["distribution"]["count"] = counts.get(
                             agent["name"], 1 if agent["class"] == "CarpoolOrchestrator" else 0
                         )
-                    name = f"drivers-{drivers}-declaring-{driver_pct}-riders-{riders}-declaring-{rider_pct}"
+                    name = (
+                        f"drivers-{drivers}-declaring-{driver_pct}"
+                        f"-riders-{riders}-declaring-{rider_pct}"
+                    )
                     yield name, cell
 
 
@@ -269,17 +341,25 @@ def cohorts(flows, kind, share, pairs, vehicle=None):
     agents = []
     for index, row in enumerate(flows[:pairs]):
         count = math.ceil(float(row["motorised_flow"]) * share)
-        home = {"latitude": float(row["origin_latitude"]), "longitude": float(row["origin_longitude"])}
-        work = {"latitude": float(row["destination_latitude"]), "longitude": float(row["destination_longitude"])}
+        home = {
+            "latitude": float(row["origin_latitude"]),
+            "longitude": float(row["origin_longitude"]),
+        }
+        work = {
+            "latitude": float(row["destination_latitude"]),
+            "longitude": float(row["destination_longitude"]),
+        }
         # The names carry the direction: the agent-list format reads the spawn peak off them.
         for direction, window, start, end in (
             ("outbound", OUTBOUND_WINDOW_S, home, work),
             ("_return", RETURN_WINDOW_S, work, home),
         ):
             agent = {
-                "class": kind, "name": f"{kind.lower()}{index}_{direction}",
+                "class": kind,
+                "name": f"{kind.lower()}{index}_{direction}",
                 "distribution": distribution(count, window),
-                "origin": point(start, TRIP_JITTER_KM), "destination": point(end, TRIP_JITTER_KM),
+                "origin": point(start, TRIP_JITTER_KM),
+                "destination": point(end, TRIP_JITTER_KM),
                 "departure_time_window": {"margin": 0, "shift": 0},
             }
             if vehicle:
@@ -297,8 +377,12 @@ def network_environment(stations, variant):
     ]
     return {
         "stations": [
-            {"orchestrator": "fleet operator", "coordinates": coordinates(stations[n]), "name": n,
-             "radius": STATION_RADIUS_M}
+            {
+                "orchestrator": "fleet operator",
+                "coordinates": coordinates(stations[n]),
+                "name": n,
+                "radius": STATION_RADIUS_M,
+            }
             for n in names
         ],
         "networks": [{"name": "network", "orchestrator": "fleet operator", "lines": lines}],
@@ -314,19 +398,31 @@ def fleet(flows, stations, service, sample):
     sizes, seats, jitter_km = SERVICES[service]
     share, pairs = SAMPLES[sample]
     first = flows[0]
-    depot = {"latitude": float(first["origin_latitude"]), "longitude": float(first["origin_longitude"])}
+    depot = {
+        "latitude": float(first["origin_latitude"]),
+        "longitude": float(first["origin_longitude"]),
+    }
     agents = [
-        {"class": "AutonomousTaxiOrchestrator", "name": "fleet operator",
-         "distribution": distribution(1, (0, 0))},
+        {
+            "class": "AutonomousTaxiOrchestrator",
+            "name": "fleet operator",
+            "distribution": distribution(1, (0, 0)),
+        },
         # The fleet stands around the largest pair's origin; "Taxi" in the name is what the
         # agent-list format spawns at its own fixed time.
-        {"class": "AutonomousTaxi", "name": "FleetTaxi",
-         "distribution": distribution(sizes[sample], (FLEET_SPAWN_S, FLEET_SPAWN_S)),
-         "origin": point(depot, jitter_km), "vehicle": {"capacity": seats},
-         "departure_time_window": {"margin": 0, "shift": 0}},
+        {
+            "class": "AutonomousTaxi",
+            "name": "FleetTaxi",
+            "distribution": distribution(sizes[sample], (FLEET_SPAWN_S, FLEET_SPAWN_S)),
+            "origin": point(depot, jitter_km),
+            "vehicle": {"capacity": seats},
+            "departure_time_window": {"margin": 0, "shift": 0},
+        },
         *cohorts(flows, "AutonomousTaxiRider", share, pairs),
     ]
-    environment = network_environment(stations, variant=sample == "100") if service == "fleet-network" else {}
+    environment = (
+        network_environment(stations, variant=sample == "100") if service == "fleet-network" else {}
+    )
     return scenario(agents, environment)
 
 

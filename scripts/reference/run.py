@@ -38,16 +38,38 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import harness  # noqa: E402
 
 METRIC_COLUMNS = [
-    "agents_spawned", "riders_total", "drivers_total", "passengers_served", "passengers_unserved",
-    "service_rate", "drivers_active", "vehicle_km_total", "vehicle_km_loaded", "vehicle_km_empty",
-    "empty_distance_share", "passenger_km", "mean_occupancy", "mean_wait_s", "mean_journey_time_s",
-    "taxi_km_empty_to_pickup", "mean_time_to_pickup_s", "fleet_utilisation", "incentive_paid",
-    "cost_per_passenger_served", "model_decisions", "model_calls", "usd_per_decision",
-    "tokens_per_decision", "decision_latency_ms", "invalid_action_rate", "stranded", "stopped_by_clock",
+    "agents_spawned",
+    "riders_total",
+    "drivers_total",
+    "passengers_served",
+    "passengers_unserved",
+    "service_rate",
+    "drivers_active",
+    "vehicle_km_total",
+    "vehicle_km_loaded",
+    "vehicle_km_empty",
+    "empty_distance_share",
+    "passenger_km",
+    "mean_occupancy",
+    "mean_wait_s",
+    "mean_journey_time_s",
+    "taxi_km_empty_to_pickup",
+    "mean_time_to_pickup_s",
+    "fleet_utilisation",
+    "incentive_paid",
+    "cost_per_passenger_served",
+    "model_decisions",
+    "model_calls",
+    "usd_per_decision",
+    "tokens_per_decision",
+    "decision_latency_ms",
+    "invalid_action_rate",
+    "stranded",
+    "stopped_by_clock",
 ]
 
-# Only the fleet engine has a fleet, and its base `Driver` is the private car. Everything else is the
-# carpool model, which the lane engine ran.
+# Only the fleet engine has a fleet, and its base `Driver` is the private car. Everything else is
+# the carpool model, which the lane engine ran.
 FLEET_CLASSES = {"AutonomousTaxi", "AutonomousTaxiRider", "AutonomousTaxiOrchestrator", "Driver"}
 
 
@@ -84,12 +106,16 @@ def one(job):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("scenarios", nargs="*")
     parser.add_argument("--seeds", type=seeds, default=seeds("1-10"))
     parser.add_argument("--out")
     parser.add_argument("--events")
-    parser.add_argument("--road-detour-factor", type=float, default=harness.DEFAULT_ROAD_DETOUR_FACTOR)
+    parser.add_argument(
+        "--road-detour-factor", type=float, default=harness.DEFAULT_ROAD_DETOUR_FACTOR
+    )
     parser.add_argument("--clock-cap-s", type=float, default=harness.DEFAULT_CLOCK_CAP_S)
     parser.add_argument("--naive-perception", action="store_true")
     parser.add_argument("--jobs", type=int, default=None)
@@ -108,20 +134,26 @@ def main():
     for tree in sorted({tree_for(scenario) for scenario in args.scenarios}):
         engine = args.engines[tree]
         if not engine or not Path(engine).is_dir():
-            sys.exit(f"the {tree} engine is not checked out: pass --{tree}-engine or set "
-                     f"{harness.ENGINE_VARIABLES[tree]}")
+            sys.exit(
+                f"the {tree} engine is not checked out: pass --{tree}-engine or set "
+                f"{harness.ENGINE_VARIABLES[tree]}"
+            )
     if args.events:
         Path(args.events).mkdir(parents=True, exist_ok=True)
 
     jobs = [(scenario, seed, args) for scenario in args.scenarios for seed in args.seeds]
     context = multiprocessing.get_context("spawn")
-    with concurrent.futures.ProcessPoolExecutor(args.jobs, mp_context=context, max_tasks_per_child=1) as pool:
+    with concurrent.futures.ProcessPoolExecutor(
+        args.jobs, mp_context=context, max_tasks_per_child=1
+    ) as pool:
         rows = list(pool.map(one, jobs))
 
     Path(args.out).parent.mkdir(parents=True, exist_ok=True)
     with open(args.out, "w", newline="") as handle:
         axes = [args.parent_column] if args.parent_column else []
-        writer = csv.DictWriter(handle, ["scenario", *axes, "seed", *METRIC_COLUMNS, *harness.EXTRA_COLUMNS])
+        writer = csv.DictWriter(
+            handle, ["scenario", *axes, "seed", *METRIC_COLUMNS, *harness.EXTRA_COLUMNS]
+        )
         writer.writeheader()
         for row in rows:
             writer.writerow({key: format_value(value) for key, value in row.items()})

@@ -32,7 +32,7 @@ matplotlib.use("svg")
 # changing this string rewrites all 28 committed figures for nothing. It stays as it is.
 matplotlib.rcParams["svg.hashsalt"] = "mas-new"
 
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt  # noqa: E402 - after the backend is chosen
 
 # One chart per metric. The axes come from the file's own header.
 #
