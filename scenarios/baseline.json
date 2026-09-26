@@ -95,6 +95,7 @@
         "jitter_radius_km": 1
       },
       "departure_offset_s": 300,
+      "station_approach": "always",
       "vehicle": {
         "capacity": 5
       }
@@ -118,6 +119,7 @@
         "jitter_radius_km": 1
       },
       "departure_offset_s": 300,
+      "station_approach": "always",
       "vehicle": {
         "capacity": 5
       }
@@ -141,6 +143,7 @@
         "jitter_radius_km": 1
       },
       "departure_offset_s": 300,
+      "station_approach": "always",
       "vehicle": {
         "capacity": 5
       }
@@ -164,6 +167,7 @@
         "jitter_radius_km": 1
       },
       "departure_offset_s": 300,
+      "station_approach": "always",
       "vehicle": {
         "capacity": 5
       }

@@ -1,11 +1,11 @@
 # Findings
 
-Everything here comes from seven committed files: `analysis/results.csv` (100 runs),
+Everything here comes from eight committed files: `analysis/results.csv` (100 runs),
 `analysis/policies.csv` (150), `analysis/networks.csv` (250), `analysis/walking.csv` (150),
-`analysis/fleet.csv` (80), `analysis/declaration.csv` (50), `analysis/adoption.csv` (50), and single
-runs at seed 42 where one is quoted as such. No row in any of them hit the clock cap and no row stranded an
-agent, so every figure below is a completed run rather than a cut-off one. Nothing here needs an API
-key.
+`analysis/fleet.csv` (80), `analysis/declaration.csv` (50), `analysis/adoption.csv` (50),
+`analysis/approach.csv` (100), and single runs at seed 42 where one is quoted as such. No row in any
+of them hit the clock cap and no row stranded an agent, so every figure below is a completed run
+rather than a cut-off one. Nothing here needs an API key.
 
 **How the comparisons are read.** Each sweep runs the same ten seeds at every axis point, so two
 rules can be differenced *per seed* rather than compared as two means with overlapping bands. Where
@@ -157,6 +157,30 @@ The boarding points sit up to two kilometres from where the population actually 
 where boarding points are in rural Wales: three rail stations, and four road stops chosen by rule
 from OpenStreetMap. Every service figure in this document rests on forty minutes of walking being
 acceptable, and that is an assumption about people rather than a measurement.
+
+## The dwell at the station is what the service is made of
+
+Every figure above has a registered driver drive to its line's station and wait there, up to its
+patience, for riders to arrive. The other reading of "registered" is a driver that drives its own
+route and stops only if somebody is already standing at a station ahead of it - `station_approach:
+on_demand`, the way a driver who never looks at the app until it is passing would behave.
+`sweeps/approach.json` runs both over the driver axis, ten seeds, `analysis/approach.csv`:
+
+| Drivers | Service, waiting at the station | Service, stopping on demand | Paired | Kilometres saved |
+|---|---|---|---|---|
+| 6 | 0.550 | 0.116 | -0.434, 0W/0T/10L | 24.1 |
+| 13 | 0.853 | 0.256 | -0.597, 0W/0T/10L | 51.0 |
+| 32 | 0.950 | 0.463 | -0.487, 0W/0T/10L | 118.2 |
+| 132 | 0.944 | 0.694 | -0.250, 0W/0T/10L | 511.0 |
+
+**Stopping on demand loses between a quarter and three fifths of the service at every fleet size,
+on every seed.** It saves distance - no detours to stations nobody is at, no dwell - but the
+distance it saves was carrying people: empty share rises from 0.481 to 0.805 at thirteen drivers,
+and the riders it does carry wait 680 s instead of 205 s. On a low-flow corridor a rider and a
+driver passing the same stop in the same minute is the exception, and the dwell is what turns a
+near miss into a ride. **What a registered driver is asked to do at the station matters more than
+anything the dispatcher decides**, and every other figure in this document is read under the
+generous answer.
 
 ## Direction beats density
 
