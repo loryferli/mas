@@ -1,9 +1,9 @@
 # Findings
 
-Everything here comes from six committed files: `analysis/results.csv` (100 runs),
+Everything here comes from seven committed files: `analysis/results.csv` (100 runs),
 `analysis/policies.csv` (150), `analysis/networks.csv` (250), `analysis/walking.csv` (150),
-`analysis/fleet.csv` (80), `analysis/declaration.csv` (50), and single runs at seed 42 where one is
-quoted as such. No row in any of them hit the clock cap and no row stranded an
+`analysis/fleet.csv` (80), `analysis/declaration.csv` (50), `analysis/adoption.csv` (50), and single
+runs at seed 42 where one is quoted as such. No row in any of them hit the clock cap and no row stranded an
 agent, so every figure below is a completed run rather than a cut-off one. Nothing here needs an API
 key.
 
@@ -43,6 +43,64 @@ buys nothing measurable (0.950 → 0.944, and the seed bands overlap completely)
 distance again. **A low-flow ridesharing service is cheap while it is short of vehicles and
 ruinous the moment it has enough of them**, and that is the shape the whole research question turns
 on.
+
+## Two drivers an hour per station is what the corridor asks for
+
+The vehicle counts above are the fleet a *scenario* declares, which makes them hard to carry
+anywhere else. The transferable unit is supply density: the corridor's four driver cohorts all spawn
+over a window of exactly one hour, and six of its seven boarding points are line origins - Aberystwyth
+is where everyone is going - so a run's supply is **drivers per hour per station**, the fleet divided
+by six. `sweeps/adoption.json` sweeps it at powers of two from one to sixteen, holding the
+thirty-two riders fixed, splitting each total across the four cohorts in the baseline's own 4:2:2:5
+proportion so the geography of supply does not shift as the density rises.
+
+| drivers/hour/station | drivers | service rate | worst seed | km per passenger served | empty share | mean wait (s) |
+|---|---|---|---|---|---|---|
+| 1 | 6 | 0.550 | 0.375 | 4.92 | 0.317 | 347 |
+| 2 | 12 | 0.841 | 0.688 | 6.26 | 0.457 | 216 |
+| 4 | 24 | 0.906 | 0.844 | 11.65 | 0.643 | 111 |
+| 8 | 48 | 0.953 | 0.906 | 21.89 | 0.755 | 42 |
+| 16 | 96 | 0.928 | 0.844 | 45.48 | 0.881 | 11 |
+
+(Ten seeds a row, `analysis/adoption.csv`. The baseline's thirteen drivers are 2.17 on this axis,
+which is why the second row and the 0.853 quoted above are the same result read two ways.)
+
+**The knee is at two, and it is the only step that is not arguable.** Doubling from one to two is
++0.291 service rate on a 10W/0T/0L count. Every step after it is smaller: two to four is +0.066 at
+6W/2T/2L, four to eight is +0.047 at 8W/1T/1L, and eight to sixteen is -0.025 at 3W/1T/6L, which is
+**no distinguishable difference at all** for the reason in the caveat below. The axis stops paying
+somewhere between four and eight, and past eight it only spends.
+
+**What is left unserved at the top of the axis is not a supply problem.** Across seeds 1 to 5 at
+sixteen drivers an hour per station, every single unserved rider ends `Canceled` for
+`NoLineAvailable` - twelve of them, and not one gave up waiting. Those riders were jittered further
+from every boarding point than their 2400 s walk budget reaches, so they never registered on a line
+and no quantity of vehicles could have collected them. That is the walking-distance ceiling two
+sections below, arriving from a different direction: **once density is past four, walking is the only
+thing still binding.**
+
+**Cost moves the whole way and never stops.** Kilometres per passenger served rise on every single
+step - 4.92, 6.26, 11.65, 21.89, 45.48 - and the empty share worsens on nine or ten seeds out of ten
+at every step from two onward. Sixteen drivers an hour per station spends **nine times** the distance
+per passenger that one does, and carries no more people than eight did.
+
+So the corridor's answer to "how much supply does this need" is **two drivers an hour per station to
+have a service at all, four to have a good one, and nothing above four is worth its distance.** One
+is not a service: it leaves nearly two thirds of the riders behind on the worst of the ten seeds. That
+is a statement about density rather than about this particular fleet, and it is the form the result
+travels in.
+
+**The caveat, and it applies to every sweep in this document that moves a driver count.** A seed
+fixes the run, not the demand. All draws are taken up front, cohort by cohort, and the four driver
+cohorts are drawn *before* the four rider cohorts, so changing a driver count changes how much
+randomness is consumed before the riders are drawn and the riders come out somewhere else entirely -
+at seed 1, the thirty-two riders at eight drivers an hour per station and the thirty-two at sixteen
+share **none** of their origins. The win/tie/loss counts on this axis therefore pair runs rather than
+pairing demand, which is a weaker thing, and a difference of the size of the eight-to-sixteen step is
+inside the draw-to-draw spread rather than above it. The steps this section rests on - +0.291 at 10/10,
+and a cost column that rises on every seed at every step - are far larger than that. Holding demand
+fixed across a supply axis would need the cohorts drawn from separate streams, which is a change to
+`Sim::new` and not a change to a sweep config.
 
 ## Seats are worth more than vehicles, by a factor of five
 
@@ -443,15 +501,20 @@ In rough order of how much:
    seconds, not rides, so what is left is the *ordering*: a contested rider goes to the driver that
    sits earlier in the arena rather than to the cheapest pair. Assigning across the whole fleet at
    once is the same computation as the fleet's `greedy_pairs` over a different pool.
-3. **Per-agent walking and driving speeds.** They are drawn once per run because under `heuristic`
+3. **Separate random streams per cohort.** All draws are taken up front in scenario order, so
+   changing a driver count changes what the riders draw and a supply axis compares different demand
+   at the same seed. Every win/tie/loss count on a driver axis in this document pairs runs rather
+   than demand because of it. Drawing each cohort from its own stream would make a supply sweep a
+   true paired comparison, and would change nothing about any single run.
+4. **Per-agent walking and driving speeds.** They are drawn once per run because under `heuristic`
    both sides must price a line's flanking legs identically to agree on a station. That agreement is
    an artefact of the rule, not of the world, and removing it changes `heuristic`'s numbers rather
    than fixing them.
-4. **A behavioural response to the incentive.** Nothing in the engine responds to a payout, so
+5. **A behavioural response to the incentive.** Nothing in the engine responds to a payout, so
    `incentive_paid` is arithmetic. The one cost figure that exists is `baseline.json` at seed 42
    under 0.10 per passenger-kilometre: **22.46 over 224.62 passenger-kilometres, 0.90 per person
    carried** - and the rate is invented, so read the ratio and not the currency.
-5. **Caching the approach legs.** Walks to stations and every fleet leg take a straight-line
+6. **Caching the approach legs.** Walks to stations and every fleet leg take a straight-line
    fallback, which gets the time right and understates distance by the detour factor. It cuts against
    the fleet and in favour of nothing else, so it strengthens rather than threatens the conclusions
    above.
